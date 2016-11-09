@@ -1,0 +1,36 @@
+//
+//  kqTBabyContactCell.h
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-9-26.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@protocol TapContactButtonDelegate <NSObject>
+
+-(void) didTapCallButtonWith:(NSIndexPath *) indexPath;
+-(void) didTapMessageButtonWith:(NSIndexPath *)indexPath;
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+@interface kqTBabyContactCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *messageButton;
+@property (weak, nonatomic) IBOutlet UIButton *telPhoneButton;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *relationLabel;
+@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (assign, nonatomic) id<TapContactButtonDelegate>delegate;
+@end

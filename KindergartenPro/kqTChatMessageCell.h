@@ -1,0 +1,18 @@
+//
+//  kqTChatMessageCell.h
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-9-25.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface kqTChatMessageCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *theChatHeadImageView;
+@property (weak, nonatomic) IBOutlet UILabel *chatNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *chatContentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *chatTimeLabel;
+@property (strong, nonatomic) NSString *fileUrlString;
+-(void) initCellWithDic:(NSDictionary *)dic;
+@end

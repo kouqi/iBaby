@@ -1,0 +1,25 @@
+//
+//  kqWonderfulMomentCell.m
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-8-7.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import "kqWonderfulMomentCell.h"
+
+@implementation kqWonderfulMomentCell
+
+- (void)awakeFromNib
+{
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

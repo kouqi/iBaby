@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="kqTBabyInfomationEntryViewController">
+            <connections>
+                <outlet property="abnormalFashaoButton" destination="2mq-cw-GNw" id="xBo-qi-u4o"/>
+                <outlet property="abnormalGanmaoButton" destination="bqw-sl-9Dc" id="pMZ-EN-jcP"/>
+                <outlet property="abnormalKesouButton" destination="kih-uU-53Y" id="1JM-QK-WEE"/>
+                <outlet property="abnormalView" destination="hQr-QI-ujx" id="1Xy-ML-qlM"/>
+                <outlet property="dBtnr" destination="YOl-mi-hzh" id="rW9-63-hWQ"/>
+                <outlet property="dBtnt" destination="crW-Rh-qYh" id="5e9-ga-TqT"/>
+                <outlet property="dBto" destination="Xkb-SU-2Do" id="4nq-mM-BNg"/>
+                <outlet property="dietView" destination="HJ2-cS-aDB" id="H2Q-BU-O3Q"/>
+                <outlet property="drinkFiveButton" destination="1lD-DH-g9L" id="M3V-VM-GR4"/>
+                <outlet property="drinkNoButton" destination="TBo-EV-l7W" id="1JD-C0-pzR"/>
+                <outlet property="drinkThreeButton" destination="wH1-IQ-5mG" id="mzN-rB-TD5"/>
+                <outlet property="drinkTwoButton" destination="cQZ-8o-grW" id="gjQ-vx-HSo"/>
+                <outlet property="drinkView" destination="qOa-Je-obS" id="Z31-G0-Z59"/>
+                <outlet property="emotionFourButton" destination="wbU-q5-9Su" id="hO3-RJ-RDA"/>
+                <outlet property="emotionOneButton" destination="X89-Cv-Iba" id="1b0-dD-99X"/>
+                <outlet property="emotionThreeButton" destination="G8r-g7-TsB" id="DK1-o2-9Qp"/>
+                <outlet property="emotionTwoButton" destination="hQe-sl-rTn" id="1W9-Zp-amF"/>
+                <outlet property="emotionView" destination="xGx-7I-ymX" id="ZPw-zy-4dh"/>
+                <outlet property="messageTextView" destination="nKI-DW-AhP" id="WFJ-zS-cjZ"/>
+                <outlet property="scrollView" destination="QRa-8y-MEJ" id="CnY-fo-BwD"/>
+                <outlet property="sleepNoButton" destination="USR-1h-IRw" id="K3H-cm-PB8"/>
+                <outlet property="sleepOneLessButton" destination="ozp-NS-ar4" id="R4C-i0-d02"/>
+                <outlet property="sleepOneToTwoButton" destination="gK0-UX-nhc" id="AoZ-5X-JPQ"/>
+                <outlet property="sleepTwoMoreButton" destination="dNp-Op-ZHt" id="guT-z9-baA"/>
+                <outlet property="sleepView" destination="DoT-BL-TAx" id="lN0-xv-xdk"/>
+                <outlet property="stoolMoreButton" destination="1af-O5-y83" id="aWY-yZ-FlW"/>
+                <outlet property="stoolNoButton" destination="HCt-oq-tJ3" id="89x-Lg-BFu"/>
+                <outlet property="stoolOneButton" destination="nN3-AU-Cy8" id="KKy-l4-dce"/>
+                <outlet property="stoolView" destination="SWA-dm-Z6f" id="G6I-1f-1OW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="hQr-QI-ujx">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="40e-cZ-QoG">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="p2a-gl-Qme"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="babyInfo6" translatesAutoresizingMaskIntoConstraints="NO" id="y2F-ad-DNX">
+                    <rect key="frame" x="130" y="5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="4zb-NK-5Iw"/>
+                        <constraint firstAttribute="height" constant="20" id="AN1-mc-F3n"/>
+                    </constraints>
+                </imageView>
+                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="异常" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFB-e5-ZEu">
+                    <rect key="frame" x="145" y="5" width="40" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Tni-2Z-M60"/>
+                        <constraint firstAttribute="width" constant="40" id="yNe-Pg-Ag3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.99215686274509807" green="0.40000000000000002" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kih-uU-53Y">
+                    <rect key="frame" x="0.0" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="jyd-aI-C6w"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="咳嗽" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="低落" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="低落" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapAbnormalButton:" destination="-1" eventType="touchUpInside" id="2ba-gf-yQV"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqw-sl-9Dc">
+                    <rect key="frame" x="107" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="7Br-V3-aL2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="感冒" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="烦躁" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="烦躁" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapAbnormalButton:" destination="-1" eventType="touchUpInside" id="uxl-h8-KPs"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mq-cw-GNw">
+                    <rect key="frame" x="214" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="aca-qC-Cfr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="发烧" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="开心" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="开心" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapAbnormalButton:" destination="-1" eventType="touchUpInside" id="DJO-uf-ULL"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="bqw-sl-9Dc" firstAttribute="centerX" secondItem="hQr-QI-ujx" secondAttribute="centerX" id="0JP-RD-dRR"/>
+                <constraint firstItem="IFB-e5-ZEu" firstAttribute="top" secondItem="hQr-QI-ujx" secondAttribute="top" constant="5" id="15n-cn-dCB"/>
+                <constraint firstItem="y2F-ad-DNX" firstAttribute="centerX" secondItem="hQr-QI-ujx" secondAttribute="centerX" constant="-20" id="4rW-2C-WO9"/>
+                <constraint firstItem="bqw-sl-9Dc" firstAttribute="top" secondItem="40e-cZ-QoG" secondAttribute="bottom" id="7oS-cb-arh"/>
+                <constraint firstItem="40e-cZ-QoG" firstAttribute="leading" secondItem="hQr-QI-ujx" secondAttribute="leading" id="9GL-MH-ln4"/>
+                <constraint firstItem="bqw-sl-9Dc" firstAttribute="width" secondItem="kih-uU-53Y" secondAttribute="width" id="Alf-rZ-Ctu"/>
+                <constraint firstItem="2mq-cw-GNw" firstAttribute="top" secondItem="40e-cZ-QoG" secondAttribute="bottom" id="IZ7-f6-G70"/>
+                <constraint firstAttribute="trailing" secondItem="40e-cZ-QoG" secondAttribute="trailing" id="RnF-Du-DHH"/>
+                <constraint firstAttribute="trailing" secondItem="2mq-cw-GNw" secondAttribute="trailing" id="W9Q-5G-3un"/>
+                <constraint firstItem="IFB-e5-ZEu" firstAttribute="centerX" secondItem="hQr-QI-ujx" secondAttribute="centerX" constant="5" id="XHw-cz-5Ky"/>
+                <constraint firstItem="2mq-cw-GNw" firstAttribute="height" secondItem="kih-uU-53Y" secondAttribute="height" id="bA3-xZ-ibs"/>
+                <constraint firstItem="40e-cZ-QoG" firstAttribute="top" secondItem="hQr-QI-ujx" secondAttribute="top" id="bks-CD-bS1"/>
+                <constraint firstItem="kih-uU-53Y" firstAttribute="width" secondItem="hQr-QI-ujx" secondAttribute="width" multiplier="1:3" id="cRp-rx-bdQ"/>
+                <constraint firstItem="bqw-sl-9Dc" firstAttribute="height" secondItem="kih-uU-53Y" secondAttribute="height" id="law-8Z-xRx"/>
+                <constraint firstItem="2mq-cw-GNw" firstAttribute="width" secondItem="kih-uU-53Y" secondAttribute="width" id="n9D-8L-m3b"/>
+                <constraint firstItem="kih-uU-53Y" firstAttribute="top" secondItem="40e-cZ-QoG" secondAttribute="bottom" id="pgt-Dt-OSs"/>
+                <constraint firstItem="y2F-ad-DNX" firstAttribute="top" secondItem="hQr-QI-ujx" secondAttribute="top" constant="5" id="vRm-Xl-aN4"/>
+                <constraint firstItem="kih-uU-53Y" firstAttribute="leading" secondItem="hQr-QI-ujx" secondAttribute="leading" id="zkf-p4-YdY"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="2WC-wX-bm5">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+        </view>
+        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="QRa-8y-MEJ">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </scrollView>
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="HJ2-cS-aDB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="scD-4X-LaB">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="62I-Zf-taz"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="babyInfo1" translatesAutoresizingMaskIntoConstraints="NO" id="2Qu-jx-Jn9">
+                    <rect key="frame" x="130" y="5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="ePg-Wd-lHv"/>
+                        <constraint firstAttribute="height" constant="20" id="k5B-sC-At6"/>
+                    </constraints>
+                </imageView>
+                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="饮食" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzU-3X-k3s">
+                    <rect key="frame" x="145" y="5" width="40" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="CYw-xh-b2P"/>
+                        <constraint firstAttribute="height" constant="20" id="cQp-BP-KLu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xkb-SU-2Do">
+                    <rect key="frame" x="0.0" y="30" width="106" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="k5p-at-Ag0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="胃口很好" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="胃口很好" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="胃口很好" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapDietButton:" destination="-1" eventType="touchUpInside" id="yMG-cZ-rbZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crW-Rh-qYh">
+                    <rect key="frame" x="107" y="30" width="106" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="1wG-Oz-hgx"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="正常饮食" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="正常饮食" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="正常饮食" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapDietButton:" destination="-1" eventType="touchUpInside" id="hFb-wT-s4z"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOl-mi-hzh">
+                    <rect key="frame" x="214" y="30" width="106" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="k1M-MT-WBR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="饮食不佳" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapDietButton:" destination="-1" eventType="touchUpInside" id="w3x-KU-nhv"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="crW-Rh-qYh" firstAttribute="centerX" secondItem="HJ2-cS-aDB" secondAttribute="centerX" id="7IA-4E-DAA"/>
+                <constraint firstAttribute="trailing" secondItem="YOl-mi-hzh" secondAttribute="trailing" id="7Xm-Wf-fO3"/>
+                <constraint firstItem="2Qu-jx-Jn9" firstAttribute="centerX" secondItem="HJ2-cS-aDB" secondAttribute="centerX" constant="-20" id="890-tU-Qmx"/>
+                <constraint firstAttribute="bottom" secondItem="crW-Rh-qYh" secondAttribute="bottom" id="E9Y-iA-aKJ"/>
+                <constraint firstItem="crW-Rh-qYh" firstAttribute="height" secondItem="Xkb-SU-2Do" secondAttribute="height" id="IiK-NU-Qo3"/>
+                <constraint firstAttribute="trailing" secondItem="scD-4X-LaB" secondAttribute="trailing" id="SpD-L7-qNt"/>
+                <constraint firstItem="scD-4X-LaB" firstAttribute="top" secondItem="HJ2-cS-aDB" secondAttribute="top" id="Uot-zp-nhn"/>
+                <constraint firstItem="YOl-mi-hzh" firstAttribute="height" secondItem="Xkb-SU-2Do" secondAttribute="height" id="Vqh-W9-HBI"/>
+                <constraint firstItem="jzU-3X-k3s" firstAttribute="top" secondItem="HJ2-cS-aDB" secondAttribute="top" constant="5" id="Wv2-Gg-URK"/>
+                <constraint firstItem="2Qu-jx-Jn9" firstAttribute="top" secondItem="HJ2-cS-aDB" secondAttribute="top" constant="5" id="Y32-QG-dVt"/>
+                <constraint firstItem="scD-4X-LaB" firstAttribute="leading" secondItem="HJ2-cS-aDB" secondAttribute="leading" id="auM-kX-hsZ"/>
+                <constraint firstItem="Xkb-SU-2Do" firstAttribute="width" secondItem="HJ2-cS-aDB" secondAttribute="width" multiplier="1:3" id="gKP-LL-hSZ"/>
+                <constraint firstItem="jzU-3X-k3s" firstAttribute="centerX" secondItem="HJ2-cS-aDB" secondAttribute="centerX" constant="5" id="ihf-7g-ULU"/>
+                <constraint firstItem="crW-Rh-qYh" firstAttribute="width" secondItem="Xkb-SU-2Do" secondAttribute="width" id="iq7-i0-aKr"/>
+                <constraint firstItem="Xkb-SU-2Do" firstAttribute="leading" secondItem="HJ2-cS-aDB" secondAttribute="leading" id="l9g-OQ-5QG"/>
+                <constraint firstAttribute="bottom" secondItem="Xkb-SU-2Do" secondAttribute="bottom" id="mLp-Re-sdk"/>
+                <constraint firstAttribute="bottom" secondItem="YOl-mi-hzh" secondAttribute="bottom" id="tt4-K1-rR1"/>
+                <constraint firstItem="YOl-mi-hzh" firstAttribute="width" secondItem="Xkb-SU-2Do" secondAttribute="width" id="xzL-zm-fml"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="qOa-Je-obS">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lXs-BD-zEL">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="O7O-ib-I36"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="babyInfo2" translatesAutoresizingMaskIntoConstraints="NO" id="KoE-dT-4jO">
+                    <rect key="frame" x="130" y="5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="6nm-oq-9RN"/>
+                        <constraint firstAttribute="height" constant="20" id="Dcr-s7-YF6"/>
+                    </constraints>
+                </imageView>
+                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="饮水" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHQ-9b-E58">
+                    <rect key="frame" x="145" y="5" width="40" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="8U5-Py-9ap"/>
+                        <constraint firstAttribute="height" constant="20" id="B6N-Gi-tws"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.99215686274509807" green="0.62352941176470589" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBo-EV-l7W">
+                    <rect key="frame" x="0.0" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="rJi-WR-Eab"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="没喝" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="没喝" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="没喝" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapDrinkButton:" destination="-1" eventType="touchUpInside" id="aOm-OQ-ESU"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQZ-8o-grW">
+                    <rect key="frame" x="107" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="6pG-hP-luz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="1-2杯" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="1-2杯" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="1-2杯" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapDrinkButton:" destination="-1" eventType="touchUpInside" id="Wcr-5a-vcx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lD-DH-g9L">
+                    <rect key="frame" x="214" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="uJE-1K-HSD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="5杯以上" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="5杯以上" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="5杯以上" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapDrinkButton:" destination="-1" eventType="touchUpInside" id="iF0-u6-l17"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wH1-IQ-5mG">
+                    <rect key="frame" x="0.0" y="60" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="lgl-ih-rF5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="3-4杯" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="3-4杯" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="3-4杯" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapDrinkButton:" destination="-1" eventType="touchUpInside" id="YSN-uW-U0R"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="cQZ-8o-grW" firstAttribute="height" secondItem="TBo-EV-l7W" secondAttribute="height" id="5BT-hV-4jc"/>
+                <constraint firstItem="cQZ-8o-grW" firstAttribute="top" secondItem="lXs-BD-zEL" secondAttribute="bottom" id="73U-Hf-vsa"/>
+                <constraint firstItem="cQZ-8o-grW" firstAttribute="width" secondItem="TBo-EV-l7W" secondAttribute="width" id="7hv-ZB-Cle"/>
+                <constraint firstItem="pHQ-9b-E58" firstAttribute="top" secondItem="qOa-Je-obS" secondAttribute="top" constant="5" id="AsI-O0-z3r"/>
+                <constraint firstItem="TBo-EV-l7W" firstAttribute="width" secondItem="qOa-Je-obS" secondAttribute="width" multiplier="1:3" id="CmI-1j-jMU"/>
+                <constraint firstItem="TBo-EV-l7W" firstAttribute="leading" secondItem="qOa-Je-obS" secondAttribute="leading" id="IvH-YR-zvV"/>
+                <constraint firstItem="1lD-DH-g9L" firstAttribute="width" secondItem="TBo-EV-l7W" secondAttribute="width" id="JRs-nc-vy8"/>
+                <constraint firstItem="cQZ-8o-grW" firstAttribute="centerX" secondItem="qOa-Je-obS" secondAttribute="centerX" id="KTC-tR-u0m"/>
+                <constraint firstItem="TBo-EV-l7W" firstAttribute="top" secondItem="lXs-BD-zEL" secondAttribute="bottom" id="Kea-pB-D9C"/>
+                <constraint firstItem="pHQ-9b-E58" firstAttribute="centerX" secondItem="qOa-Je-obS" secondAttribute="centerX" constant="5" id="TBh-aB-pJ5"/>
+                <constraint firstAttribute="trailing" secondItem="1lD-DH-g9L" secondAttribute="trailing" id="Ufg-Du-AuL"/>
+                <constraint firstItem="wH1-IQ-5mG" firstAttribute="width" secondItem="TBo-EV-l7W" secondAttribute="width" id="Umq-3u-9US"/>
+                <constraint firstItem="lXs-BD-zEL" firstAttribute="leading" secondItem="qOa-Je-obS" secondAttribute="leading" id="WtR-ok-FZZ"/>
+                <constraint firstAttribute="trailing" secondItem="lXs-BD-zEL" secondAttribute="trailing" id="XiO-tn-ix5"/>
+                <constraint firstItem="wH1-IQ-5mG" firstAttribute="top" secondItem="TBo-EV-l7W" secondAttribute="bottom" id="apL-og-qDk"/>
+                <constraint firstItem="wH1-IQ-5mG" firstAttribute="height" secondItem="TBo-EV-l7W" secondAttribute="height" id="c3B-M5-eTG"/>
+                <constraint firstItem="KoE-dT-4jO" firstAttribute="top" secondItem="qOa-Je-obS" secondAttribute="top" constant="5" id="cCO-6A-pbx"/>
+                <constraint firstItem="KoE-dT-4jO" firstAttribute="centerX" secondItem="qOa-Je-obS" secondAttribute="centerX" constant="-20" id="neF-Kv-7p6"/>
+                <constraint firstItem="1lD-DH-g9L" firstAttribute="height" secondItem="TBo-EV-l7W" secondAttribute="height" id="pzf-B3-xVQ"/>
+                <constraint firstItem="wH1-IQ-5mG" firstAttribute="leading" secondItem="qOa-Je-obS" secondAttribute="leading" id="ubN-0v-Q7j"/>
+                <constraint firstItem="lXs-BD-zEL" firstAttribute="top" secondItem="qOa-Je-obS" secondAttribute="top" id="ye5-hx-gru"/>
+                <constraint firstItem="1lD-DH-g9L" firstAttribute="top" secondItem="lXs-BD-zEL" secondAttribute="bottom" id="zdj-X9-tZd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="DoT-BL-TAx">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MDJ-T9-ogd">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="7RF-cR-z6C"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="babyInfo3" translatesAutoresizingMaskIntoConstraints="NO" id="txT-5D-wbH">
+                    <rect key="frame" x="130" y="5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="8rE-vY-5aP"/>
+                        <constraint firstAttribute="width" constant="20" id="xvf-ax-XAV"/>
+                    </constraints>
+                </imageView>
+                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="睡眠" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJN-ql-dKT">
+                    <rect key="frame" x="145" y="5" width="40" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="WzF-Fv-hIi"/>
+                        <constraint firstAttribute="height" constant="20" id="erS-jZ-daJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.33725490196078434" green="0.5490196078431373" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USR-1h-IRw">
+                    <rect key="frame" x="0.0" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="G5t-04-DjR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="没睡" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="没睡" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="没睡" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapSleepButton:" destination="-1" eventType="touchUpInside" id="Bgx-3G-5Qd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozp-NS-ar4">
+                    <rect key="frame" x="107" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="63N-rg-w1M"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="1小时以下" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="1小时以下" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="1小时以下" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapSleepButton:" destination="-1" eventType="touchUpInside" id="ClS-Lo-wsB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNp-Op-ZHt">
+                    <rect key="frame" x="214" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="NJ0-Be-i1S"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="2小时以上" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="2小时以上" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="2小时以上" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapSleepButton:" destination="-1" eventType="touchUpInside" id="VO7-ZD-lFY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gK0-UX-nhc">
+                    <rect key="frame" x="0.0" y="60" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="mfi-nN-ux9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="1-2小时" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="1-2小时" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="1-2小时" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapSleepButton:" destination="-1" eventType="touchUpInside" id="FfR-Qu-ZO5"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="txT-5D-wbH" firstAttribute="top" secondItem="DoT-BL-TAx" secondAttribute="top" constant="5" id="0nC-cW-y5r"/>
+                <constraint firstItem="ozp-NS-ar4" firstAttribute="top" secondItem="MDJ-T9-ogd" secondAttribute="bottom" id="7M7-hI-cZe"/>
+                <constraint firstItem="MDJ-T9-ogd" firstAttribute="top" secondItem="DoT-BL-TAx" secondAttribute="top" id="8ms-Yw-1od"/>
+                <constraint firstItem="DJN-ql-dKT" firstAttribute="centerX" secondItem="DoT-BL-TAx" secondAttribute="centerX" constant="5" id="FTg-O1-Cjd"/>
+                <constraint firstAttribute="trailing" secondItem="MDJ-T9-ogd" secondAttribute="trailing" id="NzY-Ml-MiV"/>
+                <constraint firstItem="USR-1h-IRw" firstAttribute="leading" secondItem="DoT-BL-TAx" secondAttribute="leading" id="OHx-Ni-Ysf"/>
+                <constraint firstItem="USR-1h-IRw" firstAttribute="top" secondItem="MDJ-T9-ogd" secondAttribute="bottom" id="SHT-8i-1SP"/>
+                <constraint firstItem="DJN-ql-dKT" firstAttribute="top" secondItem="DoT-BL-TAx" secondAttribute="top" constant="5" id="TrK-Dk-jI1"/>
+                <constraint firstAttribute="trailing" secondItem="dNp-Op-ZHt" secondAttribute="trailing" id="Ukc-G7-Uqb"/>
+                <constraint firstItem="MDJ-T9-ogd" firstAttribute="leading" secondItem="DoT-BL-TAx" secondAttribute="leading" id="UzT-KF-Ihw"/>
+                <constraint firstItem="ozp-NS-ar4" firstAttribute="width" secondItem="USR-1h-IRw" secondAttribute="width" id="VgM-G9-U1d"/>
+                <constraint firstItem="USR-1h-IRw" firstAttribute="width" secondItem="DoT-BL-TAx" secondAttribute="width" multiplier="1:3" id="XIL-Sn-0DY"/>
+                <constraint firstItem="gK0-UX-nhc" firstAttribute="height" secondItem="USR-1h-IRw" secondAttribute="height" id="Z0n-gM-YQg"/>
+                <constraint firstItem="dNp-Op-ZHt" firstAttribute="top" secondItem="MDJ-T9-ogd" secondAttribute="bottom" id="Zsi-5z-0fV"/>
+                <constraint firstItem="gK0-UX-nhc" firstAttribute="width" secondItem="USR-1h-IRw" secondAttribute="width" id="dvm-d9-wZm"/>
+                <constraint firstItem="dNp-Op-ZHt" firstAttribute="height" secondItem="USR-1h-IRw" secondAttribute="height" id="jfc-Tx-gZo"/>
+                <constraint firstItem="txT-5D-wbH" firstAttribute="centerX" secondItem="DoT-BL-TAx" secondAttribute="centerX" constant="-20" id="mKs-xT-y32"/>
+                <constraint firstItem="gK0-UX-nhc" firstAttribute="top" secondItem="USR-1h-IRw" secondAttribute="bottom" id="n1q-oF-u9M"/>
+                <constraint firstItem="gK0-UX-nhc" firstAttribute="leading" secondItem="DoT-BL-TAx" secondAttribute="leading" id="o1y-hu-GCc"/>
+                <constraint firstItem="dNp-Op-ZHt" firstAttribute="width" secondItem="USR-1h-IRw" secondAttribute="width" id="sTT-bB-MeS"/>
+                <constraint firstItem="ozp-NS-ar4" firstAttribute="centerX" secondItem="DoT-BL-TAx" secondAttribute="centerX" id="tr7-Qr-UV1"/>
+                <constraint firstItem="ozp-NS-ar4" firstAttribute="height" secondItem="USR-1h-IRw" secondAttribute="height" id="uv7-LP-ddQ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="SWA-dm-Z6f">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nyj-f1-KyD">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="P1f-9Y-xDi"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="babyInfo4" translatesAutoresizingMaskIntoConstraints="NO" id="qj1-zQ-JdS">
+                    <rect key="frame" x="130" y="5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="SAB-vU-Z5H"/>
+                        <constraint firstAttribute="width" constant="20" id="WKA-oS-n0l"/>
+                    </constraints>
+                </imageView>
+                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大便" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HB0-Ju-lcg">
+                    <rect key="frame" x="145" y="5" width="40" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Agx-Pj-S6H"/>
+                        <constraint firstAttribute="height" constant="20" id="jHw-SG-xDL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.44313725490196076" green="0.46274509803921571" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCt-oq-tJ3">
+                    <rect key="frame" x="0.0" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="sz5-z3-VxB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="0次" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="0次" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="0次" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapStoolButton:" destination="-1" eventType="touchUpInside" id="e5x-rl-gUG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nN3-AU-Cy8">
+                    <rect key="frame" x="107" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="mCL-ls-79j"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="1-2次" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="1-2次" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="1-2次" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapStoolButton:" destination="-1" eventType="touchUpInside" id="Wi9-xI-efz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1af-O5-y83">
+                    <rect key="frame" x="214" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KEU-p0-78L"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="拉肚子" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="拉肚子" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="拉肚子" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapStoolButton:" destination="-1" eventType="touchUpInside" id="uDb-dP-p9z"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="nN3-AU-Cy8" firstAttribute="width" secondItem="HCt-oq-tJ3" secondAttribute="width" id="6Mc-hv-jm2"/>
+                <constraint firstItem="qj1-zQ-JdS" firstAttribute="centerX" secondItem="SWA-dm-Z6f" secondAttribute="centerX" constant="-20" id="CmW-KI-qXr"/>
+                <constraint firstItem="Nyj-f1-KyD" firstAttribute="leading" secondItem="SWA-dm-Z6f" secondAttribute="leading" id="DHo-nX-rk4"/>
+                <constraint firstItem="Nyj-f1-KyD" firstAttribute="top" secondItem="SWA-dm-Z6f" secondAttribute="top" id="FiV-0L-gOW"/>
+                <constraint firstItem="HB0-Ju-lcg" firstAttribute="centerX" secondItem="SWA-dm-Z6f" secondAttribute="centerX" constant="5" id="Neb-mE-ta0"/>
+                <constraint firstItem="nN3-AU-Cy8" firstAttribute="top" secondItem="Nyj-f1-KyD" secondAttribute="bottom" id="Phf-pi-563"/>
+                <constraint firstAttribute="trailing" secondItem="Nyj-f1-KyD" secondAttribute="trailing" id="UfV-1N-TZr"/>
+                <constraint firstAttribute="trailing" secondItem="1af-O5-y83" secondAttribute="trailing" id="VeY-E4-T2u"/>
+                <constraint firstItem="HCt-oq-tJ3" firstAttribute="width" secondItem="SWA-dm-Z6f" secondAttribute="width" multiplier="1:3" id="afD-kF-cti"/>
+                <constraint firstItem="HCt-oq-tJ3" firstAttribute="leading" secondItem="SWA-dm-Z6f" secondAttribute="leading" id="dMI-kL-6Xc"/>
+                <constraint firstItem="HCt-oq-tJ3" firstAttribute="top" secondItem="Nyj-f1-KyD" secondAttribute="bottom" id="fHI-y0-llZ"/>
+                <constraint firstItem="1af-O5-y83" firstAttribute="height" secondItem="HCt-oq-tJ3" secondAttribute="height" id="fTQ-SR-kQg"/>
+                <constraint firstItem="nN3-AU-Cy8" firstAttribute="height" secondItem="HCt-oq-tJ3" secondAttribute="height" id="fZg-e2-NjD"/>
+                <constraint firstItem="nN3-AU-Cy8" firstAttribute="centerX" secondItem="SWA-dm-Z6f" secondAttribute="centerX" id="ifT-Ev-kdn"/>
+                <constraint firstItem="qj1-zQ-JdS" firstAttribute="top" secondItem="SWA-dm-Z6f" secondAttribute="top" constant="5" id="nKe-3E-lw9"/>
+                <constraint firstItem="1af-O5-y83" firstAttribute="width" secondItem="HCt-oq-tJ3" secondAttribute="width" id="nvP-EW-B2W"/>
+                <constraint firstItem="1af-O5-y83" firstAttribute="top" secondItem="Nyj-f1-KyD" secondAttribute="bottom" id="x0t-s1-1Rl"/>
+                <constraint firstItem="HB0-Ju-lcg" firstAttribute="top" secondItem="SWA-dm-Z6f" secondAttribute="top" constant="5" id="xxi-W9-fFj"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view autoresizesSubviews="NO" contentMode="scaleToFill" id="xGx-7I-ymX">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ud7-lc-U8f">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="GdS-12-bhE"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="babyInfo5" translatesAutoresizingMaskIntoConstraints="NO" id="yZn-Bu-9qP">
+                    <rect key="frame" x="130" y="5" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="kOV-QC-dXc"/>
+                        <constraint firstAttribute="width" constant="20" id="uMa-C7-X1b"/>
+                    </constraints>
+                </imageView>
+                <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情绪" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhW-4g-URo">
+                    <rect key="frame" x="145" y="5" width="40" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Biy-QV-KKh"/>
+                        <constraint firstAttribute="height" constant="20" id="ifx-aV-GKb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.9882352941176471" green="0.28627450980392155" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X89-Cv-Iba">
+                    <rect key="frame" x="0.0" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KVb-eU-aFr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="开心" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="开心" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="开心" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapEmotionButton:" destination="-1" eventType="touchUpInside" id="odR-f7-OYe"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQe-sl-rTn">
+                    <rect key="frame" x="107" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="UZ0-3n-b6i"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="低落" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="低落" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="低落" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapEmotionButton:" destination="-1" eventType="touchUpInside" id="bXh-wy-1ZB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8r-g7-TsB">
+                    <rect key="frame" x="214" y="30" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="pBr-i1-xYR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="哭鼻子" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="哭鼻子" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="哭鼻子" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapEmotionButton:" destination="-1" eventType="touchUpInside" id="XVE-QK-OY6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbU-q5-9Su">
+                    <rect key="frame" x="0.0" y="60" width="106" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="YSw-yp-dxY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="烦躁" backgroundImage="tBabyInfomationEntryUnSelected.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="烦躁" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="烦躁" backgroundImage="tBabyInfomationEntrySelected.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tapEmotionButton:" destination="-1" eventType="touchUpInside" id="3JZ-Kq-fhF"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ud7-lc-U8f" secondAttribute="trailing" id="8fz-6i-bY8"/>
+                <constraint firstItem="X89-Cv-Iba" firstAttribute="top" secondItem="ud7-lc-U8f" secondAttribute="bottom" id="BFi-Qi-sua"/>
+                <constraint firstItem="hQe-sl-rTn" firstAttribute="top" secondItem="ud7-lc-U8f" secondAttribute="bottom" id="F5J-0k-lMr"/>
+                <constraint firstItem="ud7-lc-U8f" firstAttribute="leading" secondItem="xGx-7I-ymX" secondAttribute="leading" id="GTr-fx-0eO"/>
+                <constraint firstItem="wbU-q5-9Su" firstAttribute="width" secondItem="X89-Cv-Iba" secondAttribute="width" id="INx-PI-JLH"/>
+                <constraint firstItem="ud7-lc-U8f" firstAttribute="top" secondItem="xGx-7I-ymX" secondAttribute="top" id="Izc-3Z-byl"/>
+                <constraint firstAttribute="trailing" secondItem="G8r-g7-TsB" secondAttribute="trailing" id="JLP-bE-iB9"/>
+                <constraint firstItem="X89-Cv-Iba" firstAttribute="leading" secondItem="xGx-7I-ymX" secondAttribute="leading" id="K7K-TC-lN9"/>
+                <constraint firstItem="hQe-sl-rTn" firstAttribute="centerX" secondItem="xGx-7I-ymX" secondAttribute="centerX" id="LUb-pr-cbJ"/>
+                <constraint firstItem="FhW-4g-URo" firstAttribute="centerX" secondItem="xGx-7I-ymX" secondAttribute="centerX" constant="5" id="P3V-ff-N1A"/>
+                <constraint firstItem="X89-Cv-Iba" firstAttribute="width" secondItem="xGx-7I-ymX" secondAttribute="width" multiplier="1:3" id="PFl-LP-9AF"/>
+                <constraint firstItem="yZn-Bu-9qP" firstAttribute="top" secondItem="xGx-7I-ymX" secondAttribute="top" constant="5" id="RCx-7h-CPw"/>
+                <constraint firstItem="wbU-q5-9Su" firstAttribute="top" secondItem="X89-Cv-Iba" secondAttribute="bottom" id="a3s-0N-PiT"/>
+                <constraint firstItem="yZn-Bu-9qP" firstAttribute="centerX" secondItem="xGx-7I-ymX" secondAttribute="centerX" constant="-20" id="aHr-rE-HAy"/>
+                <constraint firstItem="FhW-4g-URo" firstAttribute="top" secondItem="xGx-7I-ymX" secondAttribute="top" constant="5" id="bKN-Ea-qYc"/>
+                <constraint firstItem="hQe-sl-rTn" firstAttribute="height" secondItem="X89-Cv-Iba" secondAttribute="height" id="eXB-po-F4M"/>
+                <constraint firstItem="wbU-q5-9Su" firstAttribute="height" secondItem="X89-Cv-Iba" secondAttribute="height" id="ihT-c9-Lak"/>
+                <constraint firstItem="G8r-g7-TsB" firstAttribute="top" secondItem="ud7-lc-U8f" secondAttribute="bottom" id="lIg-7Y-x4Q"/>
+                <constraint firstItem="wbU-q5-9Su" firstAttribute="leading" secondItem="xGx-7I-ymX" secondAttribute="leading" id="llD-S7-AWG"/>
+                <constraint firstItem="hQe-sl-rTn" firstAttribute="width" secondItem="X89-Cv-Iba" secondAttribute="width" id="lzp-Ef-JgJ"/>
+                <constraint firstItem="G8r-g7-TsB" firstAttribute="width" secondItem="X89-Cv-Iba" secondAttribute="width" id="mx3-JL-4IJ"/>
+                <constraint firstItem="G8r-g7-TsB" firstAttribute="height" secondItem="X89-Cv-Iba" secondAttribute="height" id="rfh-Io-f7R"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <tapGestureRecognizer id="d93-YE-kax">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="mbp-Zp-hTw"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="mWE-96-qH7">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="wjM-6S-Yz0"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="R26-cY-eLj">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="kQg-Tr-5HW"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Qck-DQ-Dbg">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="BJR-2k-DAU"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="bsI-JZ-CDM">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="QbE-Ql-0Ue"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="yAp-JX-DNy">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="8zW-Fd-hub"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="Oko-Lq-DRR">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="c0D-t4-tla"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="6nN-Uv-sFb">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="hql-F7-VyI"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="48u-bo-xpf">
+            <connections>
+                <action selector="tapAbnormalGesture:" destination="-1" id="b3s-91-FZn"/>
+            </connections>
+        </tapGestureRecognizer>
+        <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" text="留言..." id="nKI-DW-AhP">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+        </textView>
+    </objects>
+    <resources>
+        <image name="babyInfo1" width="35" height="35"/>
+        <image name="babyInfo2" width="35" height="35"/>
+        <image name="babyInfo3" width="35" height="35"/>
+        <image name="babyInfo4" width="35" height="35"/>
+        <image name="babyInfo5" width="35" height="35"/>
+        <image name="babyInfo6" width="35" height="35"/>
+        <image name="background.png" width="320" height="568"/>
+        <image name="tBabyInfomationEntrySelected.png" width="100" height="30"/>
+        <image name="tBabyInfomationEntryUnSelected.png" width="100" height="30"/>
+    </resources>
+</document>

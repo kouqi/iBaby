@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="kqBabySignInDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="199.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFh-K9-X9S">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="vsb-pm-vac"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uFq-Vl-tuF">
+                        <rect key="frame" x="10" y="40" width="300" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="uFq-Vl-tuF" secondAttribute="height" multiplier="2:1" id="vMa-Iv-e5B"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77G-8X-X0a">
+                        <rect key="frame" x="0.0" y="199.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="0ET-y4-LOY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uFq-Vl-tuF" firstAttribute="top" secondItem="GFh-K9-X9S" secondAttribute="bottom" id="2jE-9i-7Qy"/>
+                    <constraint firstAttribute="bottom" secondItem="77G-8X-X0a" secondAttribute="bottom" id="6De-SZ-RzC"/>
+                    <constraint firstItem="uFq-Vl-tuF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Bbk-GJ-dFj"/>
+                    <constraint firstItem="77G-8X-X0a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DsJ-i4-R9T"/>
+                    <constraint firstItem="GFh-K9-X9S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HxQ-TU-SIM"/>
+                    <constraint firstAttribute="trailing" secondItem="uFq-Vl-tuF" secondAttribute="trailing" constant="10" id="Vxy-e0-tcE"/>
+                    <constraint firstItem="GFh-K9-X9S" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Wja-A0-fdq"/>
+                    <constraint firstAttribute="trailing" secondItem="GFh-K9-X9S" secondAttribute="trailing" id="d7l-40-YkU"/>
+                    <constraint firstAttribute="trailing" secondItem="77G-8X-X0a" secondAttribute="trailing" id="jz3-8Y-2CF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="signInImageView" destination="uFq-Vl-tuF" id="y17-Nz-kBu"/>
+                <outlet property="signInLabel" destination="GFh-K9-X9S" id="Zhg-Br-GBG"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

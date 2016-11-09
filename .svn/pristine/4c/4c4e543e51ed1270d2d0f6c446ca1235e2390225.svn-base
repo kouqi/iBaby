@@ -1,0 +1,157 @@
+//
+//  kqCreatNewFoodViewController.m
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-9-29.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import "kqCreatNewFoodViewController.h"
+#import "kqCreatNewDayFoodViewController.h"
+#import "kqCreatNewActivitiesViewController.h"
+@interface kqCreatNewFoodViewController ()
+@property(strong, nonatomic) NSString *startDateString,*endDateString;
+@property (weak, nonatomic) IBOutlet UIButton *startDateButton;
+@property (weak, nonatomic) IBOutlet UIButton *endDateButton;
+@property (assign, nonatomic) BOOL isStart;
+@property (strong, nonatomic) NSMutableArray *dateArray;
+@end
+
+@implementation kqCreatNewFoodViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *nday = [formatter stringFromDate:[NSDate date]];
+    self.startDateString = [HNAGeneral giveMeTheMonthdayWithTheDay:nday];
+    self.endDateString = [HNAGeneral giveMeTheFraidayWithTheDay:nday];
+    NSArray *arr = [HNAGeneral giveMeAWeekArrayWithBeginTime:self.startDateString andEndTime:self.endDateString];
+    self.dateArray = [NSMutableArray arrayWithArray:arr];
+    [self.startDateButton setTitle:self.startDateString forState:UIControlStateNormal];
+    [self.endDateButton setTitle:self.endDateString forState:UIControlStateNormal];
+    UIImageView *topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wave.png"]];
+    topView.frame = CGRectMake(0, 0, 320, 10);
+    [self.view addSubview:topView];
+    [self initTopBar];
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void) initTopBar
+{
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton addTarget:self action:@selector(tapBackButton) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame =CGRectMake(0.0f, 6.0f, 23.0f, 23.0f);
+    [leftButton setImage:[UIImage imageNamed:@"leftBack.png"] forState:UIControlStateNormal];
+    UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
+-(void) tapBackButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 选择日期
+- (IBAction)tapSelectStartDateButton:(id)sender {
+    self.isStart = YES;
+    FORMATTER;
+    kqDatePickerView *datePickerView = [[[NSBundle mainBundle] loadNibNamed:@"kqDatePickerView" owner:self options:nil] objectAtIndex:0];
+    datePickerView.datePicker.date = [formatter dateFromString:self.startDateString];
+    datePickerView.frame = CGRectMake(0, 10, 320, 568);
+    datePickerView.delegate = self;
+    [self.view addSubview:datePickerView];
+}
+
+- (IBAction)tapSelectEndDateButton:(id)sender {
+    self.isStart = NO;
+    FORMATTER;
+    kqDatePickerView *datePickerView = [[[NSBundle mainBundle] loadNibNamed:@"kqDatePickerView" owner:self options:nil] objectAtIndex:0];
+    datePickerView.datePicker.date = [formatter dateFromString:self.endDateString];
+    datePickerView.frame = CGRectMake(0, 10, 320, 568);
+    datePickerView.delegate = self;
+    [self.view addSubview:datePickerView];
+}
+
+#pragma mark - datePickerViewDelegate
+-(void)didChoseDate:(NSDate *)date WithView:(UIView *)datePickerView
+{
+    [datePickerView removeFromSuperview];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    [calendar setLocale:[NSLocale currentLocale]];
+    NSDateComponents *comps = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit|NSWeekdayCalendarUnit) fromDate:date];
+    FORMATTER;
+    NSString *dateString = [formatter stringFromDate:date];
+    if (self.isStart) {
+        if (comps.weekday - 1 == 1) {
+            self.startDateString = dateString;
+            [self.startDateButton setTitle:self.startDateString forState:UIControlStateNormal];
+            if (!([HNAGeneral numberOfDaysFromTheDay:self.startDateString toTheDay:dateString] == 5)) {
+                [HNAGeneral showAlertViewWithTitle:nil andMessage:@"请选择结束日期！"];
+                [self tapSelectEndDateButton:nil];
+                return;
+            }
+        }else{
+            [HNAGeneral showAlertViewWithTitle:nil andMessage:@"选择的开始时间不是周一！"];
+            return;
+        }
+    }else{
+        if (comps.weekday - 1 == 5) {
+            if ([HNAGeneral numberOfDaysFromTheDay:self.startDateString toTheDay:dateString] == 5) {
+                self.endDateString = dateString;
+                [self.endDateButton setTitle:self.endDateString forState:UIControlStateNormal];
+            }else{
+                [HNAGeneral showAlertViewWithTitle:nil andMessage:@"起始时间和结束时间相差不是5天！"];
+                return;
+            }
+        }else{
+            [HNAGeneral showAlertViewWithTitle:nil andMessage:@"选择的结束时间不是周五！"];
+            return;
+        }
+    }
+    self.dateArray = [NSMutableArray arrayWithArray:[HNAGeneral giveMeAWeekArrayWithBeginTime:self.startDateString andEndTime:self.endDateString]];
+}
+
+-(void)didCacelChoseDateWithView:(UIView *)datePickerView
+{
+    [datePickerView removeFromSuperview];
+}
+
+#pragma mark - 选择某一天
+- (IBAction)tapTheDayButton:(UIButton *)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    if (self.isFood) {
+        kqCreatNewDayFoodViewController *cndfVC = [[kqCreatNewDayFoodViewController alloc] initWithNibName:@"kqCreatNewDayFoodViewController" bundle:nil];
+        cndfVC.activityDate = [[self.dateArray objectAtIndex:0] objectAtIndex:(sender.tag - 1000)];
+        cndfVC.title = @"创建食谱";
+        [self.navigationController pushViewController:cndfVC animated:YES];
+    }else{
+        NSInteger index = sender.tag - 1000;
+        kqCreatNewActivitiesViewController *cnaVC = [[kqCreatNewActivitiesViewController alloc] initWithNibName:@"kqCreatNewActivitiesViewController" bundle:nil];
+        cnaVC.activityDate = [[self.dateArray objectAtIndex:0] objectAtIndex:index];
+        cnaVC.title = @"创建活动";
+        [self.navigationController pushViewController:cnaVC animated:YES];
+    }
+}
+- (IBAction)tapCommitButton:(id)sender {
+    
+}
+
+@end

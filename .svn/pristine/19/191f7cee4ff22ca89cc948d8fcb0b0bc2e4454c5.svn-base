@@ -1,0 +1,16 @@
+//
+//  kqPersonalInfoMation.h
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-8-28.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface kqPersonalInfoMation : NSObject
++(kqPersonalInfoMation *)sharedPersonalInfoMation;
+@property (strong, nonatomic) NSString *loginName,*loginPassword,*realName,*schoolName,*gradeName,*className,*babyEmail,*babyId,*imagPath,*teacherLoginName,*teacherID,*teacherImgPath,*principalID,*principalLoginName,*principalImgPath,*startDate,*endDae,*babyName,*cameraAccount,*cameraPassword;
+@property (strong, nonatomic) NSNumber *classId;
+@property (strong, nonatomic) NSArray *roleIds;
+@end

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rwC-sR-dtT" customClass="kqPersonalPhotosImageView">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView tag="11186" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="VuS-hI-B0c">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dl_jzmm1.png" highlightedImage="dl_jzmm2.png" id="OAD-f4-weT">
+                    <rect key="frame" x="55" y="55" width="25" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="mainImageView" destination="VuS-hI-B0c" id="xCx-HH-RRG"/>
+                <outlet property="selectedImageView" destination="OAD-f4-weT" id="tkI-FG-Nqs"/>
+                <outletCollection property="gestureRecognizers" destination="5Wc-H9-0hW" appends="YES" id="NxC-9q-J6X"/>
+            </connections>
+            <point key="canvasLocation" x="200" y="-5"/>
+        </view>
+        <tapGestureRecognizer id="5Wc-H9-0hW">
+            <connections>
+                <action selector="tapSelectedImageView:" destination="rwC-sR-dtT" id="I6G-gD-qDh"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="dl_jzmm1.png" width="50" height="50"/>
+        <image name="dl_jzmm2.png" width="50" height="50"/>
+    </resources>
+</document>

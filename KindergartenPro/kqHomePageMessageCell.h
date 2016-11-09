@@ -1,0 +1,18 @@
+//
+//  kqHomePageMessageCell.h
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-7-26.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface kqHomePageMessageCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *cellTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cellDetailLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *cellImageView;
+@property (weak, nonatomic) IBOutlet UILabel *unreaderNumber;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cellTitleHeightConstraint;
+
+@end

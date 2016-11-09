@@ -1,0 +1,192 @@
+//
+//  kqKindergartenNoticeViewController.m
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-7-26.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import "kqKindergartenNoticeViewController.h"
+#import "kqKindergartenNoticeCell.h"
+#import "kqKindergartenNoticeDetailViewController.h"
+#import "kqCreatNewKindergartenNoticeViewController.h"
+@interface kqKindergartenNoticeViewController ()
+@property(strong, nonatomic) UITableView *tableView;
+@end
+
+@implementation kqKindergartenNoticeViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self initTopBar];
+    UIImageView *topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wave.png"]];
+    topView.frame = CGRectMake(0, 0, 320, 10);
+    [self.view addSubview:topView];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, 320, [HNAGeneral fixIP5:406])];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    [HNAGeneral showOnWindow:@"加载中"];
+    HNADownLoadManager *dl = [HNADownLoadManager sharedDownLoadManager];
+    dl.delegate = self;
+    if (self.isTeacher) {
+        [dl teacherGetKindergartenNoticeWithBabyNoticeTypeID:self.babyNoticeTypeId];
+    }else{
+        [dl downLoadKindergartenNoticeWith:@"0" andbabyNoticeTypeId:self.babyNoticeTypeId];
+    }
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void)downLoadKindergartenNoticeDelegate:(NSDictionary *)dic
+{
+    [HNAGeneral hidenHUD];
+    NSDictionary *dataMap = [dic valueForKey:@"dataMap"];
+    if ([[dataMap valueForKey:@"state"] isEqualToString:SU]) {
+        NSArray *arr = [dataMap valueForKey:@"data"];
+        if (arr.count != 0) {
+            self.dataArray = [NSMutableArray arrayWithArray:arr];
+            [self.tableView reloadData];
+        }
+    }else if ([[dataMap valueForKey:@"state"] isEqualToString:ER]){
+        [HNAGeneral showAlertViewWithTitle:nil andMessage:[dataMap valueForKey:@"stateMsg"]];
+    }
+}
+
+-(void)teacherGetKindergartenNoticeDelegate:(NSDictionary *)dic
+{
+    [HNAGeneral hidenHUD];
+    NSDictionary *dataMap = [dic valueForKey:@"dataMap"];
+    NSString *state = [dataMap valueForKey:@"state"];
+    if ([state isEqualToString:SU]) {
+        NSArray *arr = [dataMap valueForKey:@"data"];
+        if (arr.count != 0) {
+//            self.fileUrlString = [NSMutableString stringWithFormat:@"%@",[dic valueForKey:@"fileUrl"]];
+            self.dataArray = [NSMutableArray arrayWithArray:arr];
+            [self.tableView reloadData];
+        }
+    }else if([state isEqualToString:ER]){
+        [HNAGeneral showAlertViewWithTitle:@"提示" andMessage:[dataMap valueForKey:@"stateMsg"]];
+    }
+}
+
+-(void) initTopBar
+{
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton addTarget:self action:@selector(tapBackButton) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame =CGRectMake(0.0f, 6.0f, 23.0f, 23.0f);
+    [leftButton setImage:[UIImage imageNamed:@"leftBack.png"] forState:UIControlStateNormal];
+    UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = left;
+    if (self.isTeacher) {
+        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [rightButton addTarget:self action:@selector(tapCreatNewButon) forControlEvents:UIControlEventTouchUpInside];
+        rightButton.frame =CGRectMake(0.0f, 6.0f, 23.0f, 23.0f);
+        [rightButton setImage:[UIImage imageNamed:@"addNewItems.png"] forState:UIControlStateNormal];
+        UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+        self.navigationItem.rightBarButtonItem = right;
+    }
+}
+
+-(void) tapBackButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) tapCreatNewButon
+{
+    self.hidesBottomBarWhenPushed = YES;
+    kqCreatNewKindergartenNoticeViewController *cnknVC = [[kqCreatNewKindergartenNoticeViewController alloc] initWithNibName:@"kqCreatNewKindergartenNoticeViewController" bundle:nil];
+    cnknVC.babyNoticeTypeId = self.babyNoticeTypeId;
+    cnknVC.title = @"创建公告";
+    [self.navigationController pushViewController:cnknVC animated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 125.0;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    kqKindergartenNoticeCell *cell = (kqKindergartenNoticeCell *)[[[NSBundle mainBundle] loadNibNamed:@"kqKindergartenNoticeCell" owner:self options:nil] objectAtIndex:0];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSDictionary *noticeDic = [self.dataArray objectAtIndex:indexPath.row];
+    if (self.isTeacher) {
+        int audioState = [[noticeDic valueForKey:@"auditState"] intValue];
+        switch (audioState) {
+            case 0:
+                cell.stateLabel.text = @"待审核";
+                break;
+            case 1:
+                cell.stateLabel.text = @"通过";
+                break;
+            case 2:
+                cell.stateLabel.text = @"未通过";
+                break;
+            default:
+                break;
+        }
+        cell.stateLabel.hidden = YES;
+//        cell.stateLabel.text = @"<#string#>"
+    }else{
+        cell.stateLabel.hidden = YES;
+    }
+    
+    if (![[noticeDic valueForKey:@"editDate"] isEqual:[NSNull null]]) {
+        cell.timeLabel.text = [[noticeDic valueForKey:@"editDate"] substringWithRange:NSMakeRange(0, 10)];
+    }
+    if (![[noticeDic valueForKey:@"noticeContent"] isEqual:[NSNull null]]) {
+        cell.contentLabel.text = [noticeDic valueForKey:@"noticeContent"];
+    }
+    if (![[noticeDic valueForKey:@"noticeTitle"] isEqual:[NSNull null]]) {
+        cell.tileLabel.text = [noticeDic valueForKey:@"noticeTitle"];
+    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    self.hidesBottomBarWhenPushed = YES;
+    NSDictionary *noticeDic = [self.dataArray objectAtIndex:indexPath.row];
+    kqKindergartenNoticeDetailViewController *kndVC = [[kqKindergartenNoticeDetailViewController alloc] initWithNibName:@"kqKindergartenNoticeDetailViewController" bundle:nil];
+    kndVC.title = [noticeDic valueForKey:@"noticeTitle"];
+    kndVC.dataDictionary = noticeDic;
+    kndVC.babyNoticeTypeId = self.babyNoticeTypeId;
+    kndVC.isEditMode = self.isTeacher;
+    [self.navigationController pushViewController:kndVC animated:YES];
+}
+
+
+@end

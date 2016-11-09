@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="kqPersonalSettingViewController">
+            <connections>
+                <outlet property="babyInfoLabel" destination="ivv-M2-lcp" id="da0-i1-ll8"/>
+                <outlet property="bottomView" destination="Kev-dB-zCg" id="tfk-VE-iKa"/>
+                <outlet property="classLabel" destination="hul-96-97r" id="Uic-6c-hI2"/>
+                <outlet property="headView" destination="XUV-xH-4bT" id="OTC-EO-foP"/>
+                <outlet property="headerImageView" destination="vqs-ig-swt" id="W7Z-jh-mBK"/>
+                <outlet property="middleView" destination="oh8-17-Uog" id="vnU-EF-BOc"/>
+                <outlet property="modifyTouxisngButton" destination="WlC-Kk-WrB" id="7Lv-Vc-Cbc"/>
+                <outlet property="nameLabel" destination="sax-gS-7J2" id="sC5-6o-Let"/>
+                <outlet property="scrollview" destination="jnt-B2-ZMN" id="cTA-7M-m08"/>
+                <outlet property="tableView" destination="TFh-qw-jhX" id="f7b-pQ-Q8N"/>
+                <outlet property="topBabyNameLabel" destination="8PZ-IR-2xy" id="mPI-6l-zWI"/>
+                <outlet property="topHeadImageView" destination="Z6Y-Md-l0k" id="NPb-0T-BZj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eta-J6-bIM">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlC-Kk-WrB">
+                            <rect key="frame" x="250" y="10" width="60" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="2rZ-GY-CuG"/>
+                                <constraint firstAttribute="width" constant="60" id="eGs-Ve-h4Q"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="修改头像"/>
+                            <connections>
+                                <action selector="tapModifyHeadImageButton:" destination="-1" eventType="touchUpInside" id="G25-O3-wtF"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z6Y-Md-l0k">
+                            <rect key="frame" x="140" y="20" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="apY-qJ-eb8"/>
+                                <constraint firstAttribute="width" constant="40" id="uD2-E4-eXA"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PZ-IR-2xy">
+                            <rect key="frame" x="0.0" y="70" width="320" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="bQD-v7-kWn"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivv-M2-lcp">
+                            <rect key="frame" x="0.0" y="100" width="320" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="k1T-BC-zsg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.38823529411764707" green="0.67450980392156867" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="8PZ-IR-2xy" firstAttribute="leading" secondItem="Eta-J6-bIM" secondAttribute="leading" id="7J3-1O-DuT"/>
+                        <constraint firstAttribute="trailing" secondItem="8PZ-IR-2xy" secondAttribute="trailing" id="EAJ-cf-A91"/>
+                        <constraint firstItem="8PZ-IR-2xy" firstAttribute="top" secondItem="Z6Y-Md-l0k" secondAttribute="bottom" constant="10" id="KxN-R3-IVh"/>
+                        <constraint firstItem="WlC-Kk-WrB" firstAttribute="top" secondItem="Eta-J6-bIM" secondAttribute="top" constant="10" id="XXd-d9-bcU"/>
+                        <constraint firstItem="ivv-M2-lcp" firstAttribute="top" secondItem="8PZ-IR-2xy" secondAttribute="bottom" constant="10" id="ZKD-Xi-QzE"/>
+                        <constraint firstAttribute="trailing" secondItem="ivv-M2-lcp" secondAttribute="trailing" id="ccQ-oF-6E2"/>
+                        <constraint firstAttribute="trailing" secondItem="WlC-Kk-WrB" secondAttribute="trailing" constant="10" id="fVd-HF-oxX"/>
+                        <constraint firstItem="ivv-M2-lcp" firstAttribute="leading" secondItem="Eta-J6-bIM" secondAttribute="leading" id="fed-Gi-YNZ"/>
+                        <constraint firstItem="Z6Y-Md-l0k" firstAttribute="centerX" secondItem="Eta-J6-bIM" secondAttribute="centerX" id="hmH-cc-LN0"/>
+                        <constraint firstItem="Z6Y-Md-l0k" firstAttribute="top" secondItem="Eta-J6-bIM" secondAttribute="top" constant="20" id="lJW-GY-kdH"/>
+                        <constraint firstAttribute="height" constant="150" id="mwH-an-1KK"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TFh-qw-jhX">
+                    <rect key="frame" x="0.0" y="150" width="320" height="260"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="260" id="o9j-BN-TTe"/>
+                    </constraints>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5T-wm-B0H">
+                    <rect key="frame" x="10" y="483" width="300" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="51m-Gm-mNA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="退出" backgroundImage="pButtonBackgrounf.png">
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="pButtonBackgrounf_selected.png"/>
+                    <connections>
+                        <action selector="tapLogOutButton:" destination="-1" eventType="touchUpInside" id="B2Q-wx-xcI"/>
+                    </connections>
+                </button>
+                <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="5yS-hE-dZk">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
+                <scrollView hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnt-B2-ZMN">
+                    <rect key="frame" x="0.0" y="10" width="320" height="405"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XUV-xH-4bT">
+                            <rect key="frame" x="0.0" y="10" width="320" height="85"/>
+                            <subviews>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="babyHeaderImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="wIj-Vf-olN">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="85"/>
+                                </imageView>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2.png" translatesAutoresizingMaskIntoConstraints="NO" id="kcs-cA-r0H">
+                                    <rect key="frame" x="20" y="17" width="50" height="50"/>
+                                </imageView>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vqs-ig-swt">
+                                    <rect key="frame" x="20" y="17" width="50" height="50"/>
+                                </imageView>
+                                <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="张天一" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sax-gS-7J2">
+                                    <rect key="frame" x="85" y="15" width="100" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.40784313725490196" green="0.29019607843137252" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="天使幼儿园三班" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hul-96-97r">
+                                    <rect key="frame" x="85" y="35" width="120" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.45882352941176469" green="0.41176470588235292" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="修改头像" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0Y-Vq-Upo">
+                                    <rect key="frame" x="205" y="33" width="60" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.45882352941176469" green="0.41176470588235292" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pDetail.png" translatesAutoresizingMaskIntoConstraints="NO" id="4tw-Sw-q4C">
+                                    <rect key="frame" x="270" y="35" width="10" height="16"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="426-zC-AfP">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="85"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapModifyHeadImageButton:" destination="-1" eventType="touchUpInside" id="3b0-lS-OMu"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="85" id="2Xn-6q-0Za"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oh8-17-Uog">
+                            <rect key="frame" x="0.0" y="115" width="320" height="132"/>
+                            <subviews>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pThreeLineBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="kC4-7V-Lcg">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="132"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q3r-JW-25x">
+                                    <rect key="frame" x="10" y="44" width="300" height="1"/>
+                                    <color key="backgroundColor" red="0.80000000000000004" green="0.77254901960784317" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWC-D7-Cr1">
+                                    <rect key="frame" x="10" y="88" width="300" height="1"/>
+                                    <color key="backgroundColor" red="0.80000000000000004" green="0.7725490196" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pDetail.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y1G-ue-wmA">
+                                    <rect key="frame" x="270" y="14" width="10" height="16"/>
+                                </imageView>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pDetail.png" translatesAutoresizingMaskIntoConstraints="NO" id="g4r-7Q-6Fw">
+                                    <rect key="frame" x="270" y="58" width="10" height="16"/>
+                                </imageView>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pDetail.png" translatesAutoresizingMaskIntoConstraints="NO" id="8ON-rS-4ct">
+                                    <rect key="frame" x="270" y="102" width="10" height="16"/>
+                                </imageView>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="修改密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Njl-VQ-fPe">
+                                    <rect key="frame" x="20" y="12" width="240" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.40784313729999999" green="0.2901960784" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="推送设置" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bii-TK-fz6">
+                                    <rect key="frame" x="20" y="56" width="240" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.40784313729999999" green="0.2901960784" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="会员详情" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLM-V9-WXF">
+                                    <rect key="frame" x="20" y="100" width="240" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.40784313729999999" green="0.2901960784" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlN-MX-rdg">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="44"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapModifyPasswordButton:" destination="-1" eventType="touchUpInside" id="cwp-Ox-cLk"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTa-HW-EzN">
+                                    <rect key="frame" x="10" y="44" width="300" height="44"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapSetPushButton:" destination="-1" eventType="touchUpInside" id="XU2-rE-jnI"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mx1-uo-n0a">
+                                    <rect key="frame" x="10" y="88" width="300" height="44"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapPersonalDetailButton:" destination="-1" eventType="touchUpInside" id="Jir-av-3lU"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="132" id="dma-PC-1ba"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-dB-zCg">
+                            <rect key="frame" x="0.0" y="267" width="320" height="88"/>
+                            <subviews>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pThreeLineBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="KYI-lz-03K">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="88"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHW-Og-ZUg">
+                                    <rect key="frame" x="10" y="44" width="300" height="1"/>
+                                    <color key="backgroundColor" red="0.80000000000000004" green="0.7725490196" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c5y-DG-ozW">
+                                    <rect key="frame" x="10" y="88" width="300" height="1"/>
+                                    <color key="backgroundColor" red="0.80000000000000004" green="0.7725490196" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </imageView>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pDetail.png" translatesAutoresizingMaskIntoConstraints="NO" id="AlU-tb-ubc">
+                                    <rect key="frame" x="270" y="14" width="10" height="16"/>
+                                </imageView>
+                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pDetail.png" translatesAutoresizingMaskIntoConstraints="NO" id="5nr-9G-hro">
+                                    <rect key="frame" x="270" y="58" width="10" height="16"/>
+                                </imageView>
+                                <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pDetail.png" translatesAutoresizingMaskIntoConstraints="NO" id="DmJ-JP-XYv">
+                                    <rect key="frame" x="270" y="102" width="10" height="16"/>
+                                </imageView>
+                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="在线更新" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzM-zp-UeS">
+                                    <rect key="frame" x="20" y="12" width="120" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.40784313729999999" green="0.2901960784" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="当前版本1.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5R-ot-ked">
+                                    <rect key="frame" x="160" y="12" width="100" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.40784313729999999" green="0.2901960784" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="意见反馈" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJs-EI-L2i">
+                                    <rect key="frame" x="20" y="12" width="240" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.40784313729999999" green="0.2901960784" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="关于" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWh-o3-rpW">
+                                    <rect key="frame" x="20" y="56" width="240" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.40784313729999999" green="0.2901960784" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG6-d1-6jB">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="44"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapCheckVersionButton:" destination="-1" eventType="touchUpInside" id="6Sq-eK-Ad3"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmh-0x-3r3">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="44"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapFeedBackButton:" destination="-1" eventType="touchUpInside" id="2y5-6N-nRk"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qze-UQ-Axu">
+                                    <rect key="frame" x="10" y="44" width="300" height="44"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tapAboutButton:" destination="-1" eventType="touchUpInside" id="ot8-4T-vdv"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCN-sC-KlQ">
+                            <rect key="frame" x="10" y="375" width="300" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="退出" backgroundImage="pButtonBackgrounf.png">
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="pButtonBackgrounf_selected.png"/>
+                            <connections>
+                                <action selector="tapLogOutButton:" destination="-1" eventType="touchUpInside" id="c6y-LL-D6T"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="XUV-xH-4bT" firstAttribute="centerX" secondItem="jnt-B2-ZMN" secondAttribute="centerX" id="DCu-ic-AMg"/>
+                        <constraint firstAttribute="bottom" secondItem="XUV-xH-4bT" secondAttribute="bottom" constant="310" id="LWU-6O-LUT"/>
+                        <constraint firstItem="XUV-xH-4bT" firstAttribute="leading" secondItem="oh8-17-Uog" secondAttribute="leading" id="Snj-WB-pzi"/>
+                        <constraint firstAttribute="trailing" secondItem="XUV-xH-4bT" secondAttribute="trailing" id="TVj-dA-CeK"/>
+                        <constraint firstAttribute="bottom" secondItem="HCN-sC-KlQ" secondAttribute="bottom" id="ciT-nF-aIc"/>
+                        <constraint firstItem="XUV-xH-4bT" firstAttribute="leading" secondItem="jnt-B2-ZMN" secondAttribute="leading" id="dA1-o8-1Hl"/>
+                        <constraint firstItem="HCN-sC-KlQ" firstAttribute="top" secondItem="Kev-dB-zCg" secondAttribute="bottom" constant="20" id="g9n-dd-BL3"/>
+                        <constraint firstItem="XUV-xH-4bT" firstAttribute="leading" secondItem="Kev-dB-zCg" secondAttribute="leading" id="h32-3J-zhv"/>
+                        <constraint firstItem="XUV-xH-4bT" firstAttribute="top" secondItem="jnt-B2-ZMN" secondAttribute="top" constant="10" id="jXP-f8-FjR"/>
+                        <constraint firstItem="XUV-xH-4bT" firstAttribute="centerX" secondItem="HCN-sC-KlQ" secondAttribute="centerX" id="kZ0-Hf-3bj"/>
+                        <constraint firstItem="XUV-xH-4bT" firstAttribute="trailing" secondItem="Kev-dB-zCg" secondAttribute="trailing" id="m1T-Ml-M1j"/>
+                        <constraint firstItem="Kev-dB-zCg" firstAttribute="top" secondItem="oh8-17-Uog" secondAttribute="bottom" constant="20" id="nY0-PE-5yT"/>
+                        <constraint firstItem="XUV-xH-4bT" firstAttribute="trailing" secondItem="oh8-17-Uog" secondAttribute="trailing" id="uH0-Vc-1L1"/>
+                        <constraint firstItem="oh8-17-Uog" firstAttribute="top" secondItem="XUV-xH-4bT" secondAttribute="bottom" constant="20" id="vLk-cO-6bR"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Eta-J6-bIM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4g8-JO-ggc"/>
+                <constraint firstItem="5yS-hE-dZk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GTH-Im-Qv5"/>
+                <constraint firstItem="jnt-B2-ZMN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GhA-eK-r1N"/>
+                <constraint firstAttribute="trailing" secondItem="TFh-qw-jhX" secondAttribute="trailing" id="HSZ-4e-KII"/>
+                <constraint firstItem="jnt-B2-ZMN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="UUb-13-vob"/>
+                <constraint firstItem="TFh-qw-jhX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VUQ-U3-nkg"/>
+                <constraint firstItem="x5T-wm-B0H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="ayO-9O-aXx"/>
+                <constraint firstAttribute="trailing" secondItem="Eta-J6-bIM" secondAttribute="trailing" id="bcv-V9-SmN"/>
+                <constraint firstAttribute="bottom" secondItem="x5T-wm-B0H" secondAttribute="bottom" constant="55" id="bvS-xK-pgT"/>
+                <constraint firstAttribute="bottom" secondItem="jnt-B2-ZMN" secondAttribute="bottom" constant="153" id="fWk-Sk-HqK"/>
+                <constraint firstItem="Eta-J6-bIM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kvh-jd-mr2"/>
+                <constraint firstItem="TFh-qw-jhX" firstAttribute="top" secondItem="Eta-J6-bIM" secondAttribute="bottom" id="nl0-jg-h9R"/>
+                <constraint firstItem="jnt-B2-ZMN" firstAttribute="trailing" secondItem="5yS-hE-dZk" secondAttribute="trailing" id="uMp-ma-u3Z"/>
+                <constraint firstItem="jnt-B2-ZMN" firstAttribute="leading" secondItem="5yS-hE-dZk" secondAttribute="leading" id="uPJ-Xy-hrn"/>
+                <constraint firstAttribute="trailing" secondItem="x5T-wm-B0H" secondAttribute="trailing" constant="10" id="uRX-uf-HwT"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="2.png" width="49" height="50"/>
+        <image name="babyHeaderImage.png" width="300" height="85"/>
+        <image name="background.png" width="320" height="568"/>
+        <image name="pButtonBackgrounf.png" width="300" height="30"/>
+        <image name="pButtonBackgrounf_selected.png" width="300" height="30"/>
+        <image name="pDetail.png" width="9" height="16"/>
+        <image name="pThreeLineBackground.png" width="300" height="132"/>
+    </resources>
+</document>

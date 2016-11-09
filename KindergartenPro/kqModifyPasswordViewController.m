@@ -1,0 +1,124 @@
+//
+//  kqModifyPasswordViewController.m
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-8-20.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import "kqModifyPasswordViewController.h"
+
+@interface kqModifyPasswordViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *theCurrentPasswordTextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *theNewPasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *theConfirmNewPasswordTextField;
+
+@end
+
+@implementation kqModifyPasswordViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+//    UIImageView *topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wave.png"]];
+//    topView.frame = CGRectMake(0, 0, 320, 10);
+//    [self.view addSubview:topView];
+    [self initTopBar];
+    [self.theCurrentPasswordTextField becomeFirstResponder];
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void) initTopBar
+{
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton addTarget:self action:@selector(tapBackButton) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame =CGRectMake(0.0f, 6.0f, 23.0f, 23.0f);
+    [leftButton setImage:[UIImage imageNamed:@"leftBack.png"] forState:UIControlStateNormal];
+    UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
+-(void) tapBackButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)downLoadModifyPasswordDelegate:(NSDictionary *)dic
+{
+    self.theCurrentPasswordTextField.text = nil;
+    self.theNewPasswordTextField.text = nil;
+    self.theConfirmNewPasswordTextField.text = nil;
+    [HNAGeneral hidenHUD];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)tapConfirmButton:(id)sender {
+    if ([self checkCurrentPassword]) {
+        if ([self checkTheNewPassword]) {
+            if ([self checkConfirmNewPassword]) {
+                HNADownLoadManager *dlm = [HNADownLoadManager sharedDownLoadManager];
+                dlm.delegate = self;
+                [HNAGeneral showOnWindow:@"修改中"];
+                NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+                NSDictionary *userInfo = [ud objectForKey:@"login"];
+                NSString *password = [userInfo valueForKey:@"password"];
+                [dlm downLoadModifyPasswordWithOldPassword:password andNewPassword:self.theNewPasswordTextField.text];
+            }
+        }
+    }
+}
+
+-(BOOL) checkCurrentPassword
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSDictionary *userInfo = [ud objectForKey:@"login"];
+    NSString *password = [userInfo valueForKey:@"password"];
+    if ([self.theCurrentPasswordTextField.text isEqualToString:password]) {
+        return YES;
+    }else{
+        [HNAGeneral showAlertViewWithTitle:nil andMessage:@"当前密码输入错误！"];
+        return NO;
+    }
+}
+
+-(BOOL) checkTheNewPassword
+{
+    if ([self.theNewPasswordTextField.text isEqualToString:@""]) {
+        [HNAGeneral showAlertViewWithTitle:nil andMessage:@"请输入新密码！"];
+        return NO;
+    }else{
+        if (self.theNewPasswordTextField.text.length < 6) {
+            [HNAGeneral showAlertViewWithTitle:nil andMessage:@"新密码要大于6位！"];
+            return NO;
+        }
+    }
+    return YES;
+}
+
+-(BOOL) checkConfirmNewPassword
+{
+    if ([self.theNewPasswordTextField.text isEqualToString:self.theConfirmNewPasswordTextField.text]) {
+        return YES;
+    }else{
+        [HNAGeneral showAlertViewWithTitle:nil andMessage:@"确认密码与新密码不一致！"];
+        return NO;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

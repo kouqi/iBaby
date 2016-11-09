@@ -1,0 +1,29 @@
+//
+//  kqSendPictureTuServicesViewController.h
+//  kqCameroDemo
+//
+//  Created by 海峰 on 14-8-18.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@protocol SendPictureDelegate <NSObject>
+
+-(void) cacleSendPicture;
+-(void) didFinishSendPicture;
+
+@end
+
+
+
+@interface kqSendPictureTuServicesViewController : UIViewController<UIAlertViewDelegate,HNADownLoadDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *pictureTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *pictureTextBottomLine;
+@property (weak, nonatomic) IBOutlet UIImageView *picture;
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSMutableArray *imagesArray;
+@property (strong, nonatomic) NSString *albumId;
+@property (assign, nonatomic) id<SendPictureDelegate>delegate;
+@property(assign, nonatomic) BOOL isWonderfulMomentMode;
+@end

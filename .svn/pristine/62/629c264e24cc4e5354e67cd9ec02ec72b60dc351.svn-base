@@ -1,0 +1,25 @@
+//
+//  kqBabyInformationManualCell.h
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-7-26.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <CoreAudio/CoreAudioTypes.h>
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
+@interface kqBabyInformationManualCell : UITableViewCell<AVAudioPlayerDelegate,MPMediaPickerControllerDelegate>
+@property (strong, nonatomic) NSString *recoderTempFile;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UIButton *voiceButton;
+@property (weak, nonatomic) IBOutlet UILabel *timeLengthLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *voiceFirstImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *voiceSecondImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *voiceThirdImageView;
+@property (strong, nonatomic) MPMoviePlayerController *moviePlayer;
+@property (assign, nonatomic) BOOL isPlaying;
+-(void) stopAnimation;
+@end

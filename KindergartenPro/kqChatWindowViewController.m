@@ -1,0 +1,481 @@
+//
+//  kqChatWindowViewController.m
+//  ChatViewDemo
+//
+//  Created by 海峰 on 14-8-12.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON)
+
+#import "kqChatWindowViewController.h"
+
+#import "RecordAudio.h"
+@interface kqChatWindowViewController (){
+    RecordAudio *recordAudio;
+    NSData *curAudio;
+    BOOL isRecording;
+}
+
+@end
+
+static double startRecordTime=0;
+static double endRecordTime=0;
+
+@implementation kqChatWindowViewController
+@synthesize roleType;
+#pragma 适配
+-(bool) is_iphone_5
+{
+    static bool first = true;
+    static bool res = false;
+    if (first) {
+        res = IS_IPHONE_5;
+        first = false;
+    }
+    return res;
+}
+
+-(int) getScreenHeight
+{
+    return [self is_iphone_5] ? 568 : 480;
+}
+
+-(int) fixIP5:(int)height
+{
+    return height + ([self getScreenHeight] - 480);
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+//TODO:获取聊天内容代理
+-(void)didRecieveMessageWithArray:(NSMutableArray *)messageArray
+{
+    if (!self.isPlayingSound) {
+        if (self.messageArray == nil) {
+            self.messageArray = [NSMutableArray arrayWithArray:messageArray];
+        }else{
+            self.messageArray = messageArray;
+        }
+        [self.tableView reloadData];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
+}
+
+
+#pragma 录音输入
+- (IBAction)tapBegin:(id)sender {
+    kqPlaySoundSingleton *ps = [kqPlaySoundSingleton sharedkqPlaySoundSingleton];
+    [ps stopPlaySoundAndCancelDelegate];
+    UIButton *btn = (UIButton *) sender;
+    [btn setTitle:@"松开 结束" forState:UIControlStateHighlighted];
+//    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc]init];
+//    //设置录音格式  AVFormatIDKey==kAudioFormatLinearPCM
+//    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+//    //设置录音采样率(Hz) 如：AVSampleRateKey==8000/44100/96000（影响音频的质量）
+//    [recordSetting setValue:[NSNumber numberWithFloat:44100] forKey:AVSampleRateKey];
+//    //录音通道数  1 或 2
+//    [recordSetting setValue:[NSNumber numberWithInt:1] forKey:AVNumberOfChannelsKey];
+//    //线性采样位数  8、16、24、32
+//    [recordSetting setValue:[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
+//    //录音的质量
+//    [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityHigh] forKey:AVEncoderAudioQualityKey];
+//    
+//    //Now that we have our settings we are going to instanciate an instance of our recorder instance.
+//    //Generate a temp file for use by the recording.
+//    //This sample was one I found online and seems to be a good choice for making a tmp file that
+//    //will not overwrite an existing one.
+//    //I know this is a mess of collapsed things into 1 call.  I can break it out if need be.
+//    _recordedTmpFile = [NSTemporaryDirectory() stringByAppendingPathComponent: [NSString stringWithFormat: @"%.0f.%@", [NSDate timeIntervalSinceReferenceDate] * 1000.0, @"caf"]];
+//    NSURL * fileUrl = [NSURL fileURLWithPath:_recordedTmpFile];
+//    NSLog(@"Using File called: %@",fileUrl);
+//    //Setup the recorder to use this file and record to it.
+//    NSError *error = nil;
+//    _recoder = [[ AVAudioRecorder alloc] initWithURL:fileUrl settings:recordSetting error:&error];
+//    //Use the recorder to start the recording.
+//    //Im not sure why we set the delegate to self yet.
+//    //Found this in antother example, but Im fuzzy on this still.
+//    [_recoder setDelegate:self];
+//    //We call this to start the recording process and initialize
+//    //the subsstems so that when we actually say "record" it starts right away.
+//    [_recoder prepareToRecord];
+//    //Start the actual Recording
+//    [_recoder record];
+    [recordAudio startRecord];
+    startRecordTime = [NSDate timeIntervalSinceReferenceDate];
+    NSLog(@"1111111111111111");
+}
+
+- (IBAction)tapCancel:(id)sender {
+    endRecordTime = [NSDate timeIntervalSinceReferenceDate];
+//    [_recoder stop];
+//    [self.messageArray addObject:@{@"content": @"",@"time":@"2014-07-14 22:52",@"flag":@"1",@"who":@"1",@"soundPath":_recordedTmpFile}];
+    
+    NSURL *url = [recordAudio stopRecord];
+    if (url != nil) {
+        curAudio = EncodeWAVEToAMR([NSData dataWithContentsOfURL:url],1,16);
+    }
+    kqChatWindowAuxiliary *cwa = [kqChatWindowAuxiliary sharedChatWindowAuxiliary];
+    cwa.roleType = self.roleType;
+    cwa.roleID = self.roleID;
+    cwa.roleName = self.roleName;
+    cwa.delegate = self;
+    endRecordTime -= startRecordTime;
+    [cwa sendMessage:self.inputTextView.text andSoundFile:curAudio andLength:endRecordTime];
+}
+
+#pragma 文字输入
+- (IBAction)tapPlaceholderLabel:(id)sender {
+    [self.inputTextView becomeFirstResponder];
+}
+
+#pragma textViewDelegate
+-(void)textViewDidChange:(UITextView *)textView
+{
+    NSString *content = self.inputTextView.text;
+    CGFloat height;
+    CGSize textsize = [content sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(180.0f, 75.0f) lineBreakMode:NSLineBreakByWordWrapping];
+    height = textsize.height;
+    if (height <= 30.0f) {
+        height = 30.0f;
+        if (self.inputTextView.frame.size.height != height) {
+            self.inputTextView.frame = CGRectMake(45.0f, 10.0f, 195.0f, height);
+            self.inputView.frame = CGRectMake(0, [self fixIP5:366] - self.keyBordHeight, 320.0f, 50.0f);
+            self.tableView.frame = CGRectMake(0, 0, 320, [self fixIP5:366] - self.keyBordHeight);
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }
+    }else if (height <= 45.0f) {
+        height = 45.0f;
+        if (self.inputTextView.frame.size.height != height) {
+            self.inputTextView.frame = CGRectMake(45.0f, 10.0f, 195.0f, height);
+            self.inputView.frame = CGRectMake(0, [self fixIP5:366] - self.keyBordHeight - 15.0f, 320.0f, 65.0f);
+            self.tableView.frame = CGRectMake(0, 0, 320, [self fixIP5:366] - self.keyBordHeight - 15.0f);
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }
+    }else if (height <= 60.0f) {
+        height = 60.0f;
+        if (self.inputTextView.frame.size.height != height) {
+            self.inputTextView.frame = CGRectMake(45.0f, 10.0f, 195.0f, height);
+            self.inputView.frame = CGRectMake(0, [self fixIP5:366] - self.keyBordHeight - 30.0f, 320.0f, 80.0f);
+            self.tableView.frame = CGRectMake(0, 0, 320, [self fixIP5:366] - self.keyBordHeight - 30.0f);
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }
+    }else{
+        height = 75.0f;
+        if (self.inputTextView.frame.size.height != height) {
+            self.inputTextView.frame = CGRectMake(45.0f, 10.0f, 195.0f, height);
+            self.inputView.frame = CGRectMake(0, [self fixIP5:366] - self.keyBordHeight - 45.0f, 320.0f, 95.0f);
+            self.tableView.frame = CGRectMake(0, 0, 320, [self fixIP5:366] - self.keyBordHeight - 45.0f);
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+        }
+    }
+    self.lastPostion = self.tableView.contentOffset.y;
+    if ([self.inputTextView.text isEqualToString:@""] || self.inputTextView.text == nil) {
+        self.sendMessageButton.enabled = NO;
+    }else{
+        self.sendMessageButton.enabled = YES;
+    }
+}
+
+#pragma keyBoardNotification
+-(void) keyboardWillShow:(NSNotification *)note
+{
+    [self.voiceOrkeyboardButton setImage:[UIImage imageNamed:@"recoderVoice.png"] forState:UIControlStateNormal];
+	CGRect keyboardBounds;
+    [[note.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardBounds];
+    keyboardBounds = [self.view convertRect:keyboardBounds toView:nil];
+    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:[duration doubleValue]];
+    [UIView setAnimationCurve:[curve intValue]];
+    self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height +self.keyBordHeight - keyboardBounds.size.height);
+    if (self.messageArray.count != 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
+	self.inputView.frame = CGRectMake(0, self.inputView.frame.origin.y + self.keyBordHeight - keyboardBounds.size.height, 320, 50);
+	[UIView commitAnimations];
+    self.lastPostion = self.tableView.contentOffset.y;
+    self.keyBordHeight = keyboardBounds.size.height;
+    self.placeholderLabel.hidden = YES;
+}
+
+-(void) keyboardWillHide:(NSNotification *)note
+{
+    NSNumber *duration = [note.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [note.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:[duration doubleValue]];
+    [UIView setAnimationCurve:[curve intValue]];
+    self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height + self.keyBordHeight);
+	self.inputView.frame = CGRectMake(0, self.inputView.frame.origin.y + self.keyBordHeight, 320, self.tableView.frame.size.height);
+	[UIView commitAnimations];
+    if (self.inputTextView.text == nil || [self.inputTextView.text isEqualToString:@""]) {
+        self.placeholderLabel.hidden = NO;
+    }
+     self.keyBordHeight = 0;
+}
+
+-(void) resignTextFieldFirstResponder
+{
+    [self.inputTextView resignFirstResponder];
+}
+
+-(void) initTopBar
+{
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton addTarget:self action:@selector(tapBackButton) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame =CGRectMake(0.0f, 6.0f, 23.0f, 23.0f);
+    [leftButton setImage:[UIImage imageNamed:@"leftBack.png"] forState:UIControlStateNormal];
+    UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
+-(void) tapBackButton
+{
+    kqChatWindowAuxiliary *cwa = [kqChatWindowAuxiliary sharedChatWindowAuxiliary];
+    cwa.roleType = self.roleType;
+    cwa.roleID = self.roleID;
+    cwa.roleName = self.roleName;
+    [cwa cancelDelegate];
+    HNADownLoadManager *dl = [HNADownLoadManager sharedDownLoadManager];
+    [dl cancelDelegate];
+    if (self.delete) {
+        [self.delete didBackView];
+    }
+    kqPlaySoundSingleton *psl = [kqPlaySoundSingleton sharedkqPlaySoundSingleton];
+    [psl stopPlaySoundAndCancelDelegate];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.isPlayingSound = NO;
+    self.playSoundCount = 0;
+    self.sendMessageButton.enabled = NO;
+//    UIImageView *topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wave.png"]];
+//    topView.frame = CGRectMake(0, 0, 320, 10);
+//    [self.view addSubview:topView];
+    [self initTopBar];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    self.inputTextView.layer.cornerRadius = 3.0f;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 15, 320, [self fixIP5:351])];
+    self.inputView.frame = CGRectMake(0, [self fixIP5:366], 320, 50);
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+    self.lastPostion = 0;
+    self.keyBordHeight = 0;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignTextFieldFirstResponder)];
+    [self.tableView addGestureRecognizer:tap];
+
+//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    
+    NSError *error = nil;
+    AVAudioSession * audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error: &error];
+    [audioSession setActive:YES error: &error];
+    
+    kqChatWindowAuxiliary *cwa = [kqChatWindowAuxiliary sharedChatWindowAuxiliary];
+    cwa.roleType = self.roleType;
+    cwa.roleID = self.roleID;
+    cwa.roleName = self.roleName;
+    cwa.delegate = self;
+    [cwa startReceiveUnReadMessage];
+    recordAudio = [[RecordAudio alloc]init];
+}
+- (IBAction)tapSendButton:(id)sender {
+    
+//    [self.messageArray addObject:@{@"content": self.inputTextView.text,@"time":@"2014-07-14 22:52",@"flag":@"1",@"who":@"1"}];
+    kqChatWindowAuxiliary *cwa = [kqChatWindowAuxiliary sharedChatWindowAuxiliary];
+    cwa.roleType = self.roleType;
+    cwa.roleID = self.roleID;
+    cwa.roleName = self.roleName;
+    cwa.delegate = self;
+    [cwa sendMessage:self.inputTextView.text andSoundFile:nil andLength:0];
+    [self.tableView reloadData];
+    self.inputTextView.frame = CGRectMake(45.0f, 10.0f, 195.0f, 30.0f);
+    self.inputView.frame = CGRectMake(0, [self fixIP5:366] - self.keyBordHeight, 320.0f, 50.0f);
+    self.tableView.frame = CGRectMake(0, 0, 320, [self fixIP5:366] - self.keyBordHeight);
+//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.messageArray.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    self.inputTextView.text = nil;
+    self.sendMessageButton.enabled = NO;
+//    [self.inputTextView resignFirstResponder];
+}
+
+- (IBAction)tapVoiceOrTextButton:(id)sender {
+    UIButton *btn = (UIButton *) sender;
+    if ([btn.imageView.image isEqual:[UIImage imageNamed:@"recoderVoice.png"]]) {
+        [btn setImage:[UIImage imageNamed:@"keyBord.png"] forState:UIControlStateNormal];
+        [self.inputTextView resignFirstResponder];
+        self.inputTextView.hidden = YES;
+        self.placeholderLabel.hidden = YES;
+        self.recoderVoiceButton.hidden = NO;
+    }else{
+        [btn setImage:[UIImage imageNamed:@"recoderVoice.png"] forState:UIControlStateNormal];
+        [self.inputTextView becomeFirstResponder];
+        self.inputTextView.hidden = NO;
+        self.recoderVoiceButton.hidden = YES;
+    }
+}
+
+#pragma scrollViewDelegate 撤销文本框响应
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if ([scrollView isKindOfClass:[UITableView class]]) {
+        int currentPostion = scrollView.contentOffset.y;
+        if (currentPostion < _lastPostion) {
+            _lastPostion = currentPostion;
+            [self.inputTextView resignFirstResponder];
+            NSLog(@"ScrollDown now");
+        }else{
+            NSLog(@"ScrollUp now");
+        }
+    }
+}
+
+#pragma tableViewDelegate
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.messageArray.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [self cellHeight:indexPath];
+}
+
+-(CGFloat) cellHeight:(NSIndexPath *) indexPath
+{
+    NSDictionary *dic = [self.messageArray objectAtIndex:indexPath.row];
+    NSString *content = [dic valueForKey:@"content"];
+    if (content == nil || [content isEqualToString:@""]) {
+        NSString *flag = [dic valueForKey:@"flag"];
+        if ([flag isEqualToString:@"1"]) {
+            return 105.0f;
+        }else{
+            return 70.0f;
+        }
+    }else{
+        CGFloat height;
+        CGSize textsize = [content sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(230.0f, 2000.0f) lineBreakMode:NSLineBreakByWordWrapping];
+        NSString *flag = [dic valueForKey:@"flag"];
+        if ([flag isEqualToString:@"1"]) {
+            height = textsize.height + 12.0f + 37.0f +19.0f;
+        }else{
+            height = textsize.height + 12.0f + 2.0f +19.0f;
+        }
+        if (height < 105.0f) {
+            return 105.0f;
+        }else{
+            return height;
+        }
+    }
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *who = [[self.messageArray objectAtIndex:indexPath.row] valueForKey:@"who"];
+    if ([who isEqualToString:@"1"]) {
+        static NSString *CellIdentifier = @"kqChatMeCell";
+        kqChatMeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier]; //改为以下的方法
+        if (cell == nil) {
+            cell = (kqChatMeCell *)[[[NSBundle mainBundle] loadNibNamed:@"kqChatMeCell" owner:self options:nil] objectAtIndex:0];
+        }else{
+            [cell reuseTheCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setChatContentText:[self.messageArray objectAtIndex:indexPath.row]];
+        cell.delegate = self;
+        return cell;
+    }else{
+        static NSString *CellIdentifier = @"kqOtherCell";
+        kqOtherCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier]; //改为以下的方法
+        if (cell == nil) {
+            cell = (kqOtherCell *)[[[NSBundle mainBundle] loadNibNamed:@"kqOtherCell" owner:self options:nil] objectAtIndex:0];
+        }else{
+            [cell reuseTheCell];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setChatContentText:[self.messageArray objectAtIndex:indexPath.row]];
+        cell.delegate = self;
+        return cell;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *who = [[self.messageArray objectAtIndex:indexPath.row] valueForKey:@"who"];
+    if ([who isEqualToString:@"1"]) {
+        kqChatMeCell *cellsn = (kqChatMeCell *) cell;
+        [cellsn reuseTheCell];
+    }else{
+        kqOtherCell *cellsn = (kqOtherCell *) cell;
+        [cellsn reuseTheCell];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+//TODO:kqPlayingSoundDelegate
+-(void)startPlayingSound
+{
+    self.isPlayingSound = YES;
+    self.playSoundCount++;
+}
+
+-(void)endPlayingSound
+{
+    self.playSoundCount--;
+    if (self.playSoundCount == 0) {
+        self.isPlayingSound = NO;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

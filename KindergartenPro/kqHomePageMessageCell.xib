@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="kqHomePageMessageCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3U-Cm-1zc">
+                        <rect key="frame" x="10" y="15" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="l3U-Cm-1zc" secondAttribute="height" multiplier="1:1" id="cLI-KT-7x9"/>
+                            <constraint firstAttribute="width" constant="40" id="f0J-Vm-rCB"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每周活动" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geo-dl-NYJ">
+                        <rect key="frame" x="65" y="10" width="210" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="gW8-fe-Ze6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecy-gi-ZJs">
+                        <rect key="frame" x="65" y="40" width="200" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="JPp-Su-jhb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uj6-Y0-ouF">
+                        <rect key="frame" x="285" y="24" width="20" height="20"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="FlV-J4-XCO"/>
+                            <constraint firstAttribute="width" constant="20" id="jV3-cQ-OOI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3W-6s-wCk">
+                        <rect key="frame" x="0.0" y="69.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="Aid-sW-vXt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="uj6-Y0-ouF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1uU-V3-4di"/>
+                    <constraint firstItem="Geo-dl-NYJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="8CS-Yh-VhJ"/>
+                    <constraint firstAttribute="trailing" secondItem="uj6-Y0-ouF" secondAttribute="trailing" constant="15" id="8hb-kt-fdz"/>
+                    <constraint firstItem="B3W-6s-wCk" firstAttribute="top" secondItem="ecy-gi-ZJs" secondAttribute="bottom" constant="9.5" id="Aee-bu-3DY"/>
+                    <constraint firstItem="B3W-6s-wCk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="CZq-J0-fYm"/>
+                    <constraint firstItem="uj6-Y0-ouF" firstAttribute="leading" secondItem="Geo-dl-NYJ" secondAttribute="trailing" constant="10" id="Hze-0E-f3R"/>
+                    <constraint firstItem="Geo-dl-NYJ" firstAttribute="leading" secondItem="l3U-Cm-1zc" secondAttribute="trailing" constant="15" id="I6p-Pv-oKe"/>
+                    <constraint firstItem="l3U-Cm-1zc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IHS-XS-4jt"/>
+                    <constraint firstItem="ecy-gi-ZJs" firstAttribute="leading" secondItem="l3U-Cm-1zc" secondAttribute="trailing" constant="15" id="JFD-tz-tyW"/>
+                    <constraint firstAttribute="trailing" secondItem="B3W-6s-wCk" secondAttribute="trailing" id="N8k-f1-7Tm"/>
+                    <constraint firstItem="l3U-Cm-1zc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hUn-VF-Uk6"/>
+                    <constraint firstItem="uj6-Y0-ouF" firstAttribute="leading" secondItem="ecy-gi-ZJs" secondAttribute="trailing" constant="20" id="kcM-pX-6jG"/>
+                    <constraint firstAttribute="bottom" secondItem="B3W-6s-wCk" secondAttribute="bottom" id="mcp-1F-ka0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="cellDetailLabel" destination="ecy-gi-ZJs" id="VSN-eZ-pQg"/>
+                <outlet property="cellImageView" destination="l3U-Cm-1zc" id="tyj-3g-ArB"/>
+                <outlet property="cellTitleHeightConstraint" destination="gW8-fe-Ze6" id="Zwd-HQ-m2I"/>
+                <outlet property="cellTitleLabel" destination="Geo-dl-NYJ" id="4Y3-Zq-KT1"/>
+                <outlet property="unreaderNumber" destination="uj6-Y0-ouF" id="cY0-ne-sHt"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

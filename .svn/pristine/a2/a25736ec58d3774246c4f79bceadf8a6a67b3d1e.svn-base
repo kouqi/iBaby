@@ -1,0 +1,146 @@
+//
+//  kqBabyInformationManualCell.m
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-7-26.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import "kqBabyInformationManualCell.h"
+
+@interface kqBabyInformationManualCell ()
+@property (strong, nonatomic) NSTimer *timer1,*timer2,*timer3;
+@end
+
+@implementation kqBabyInformationManualCell
+
+- (void)awakeFromNib
+{
+    // Initialization code
+}
+
+-(void) animation1
+{
+    self.voiceFirstImageView.hidden = NO;
+    self.voiceSecondImageView.hidden = YES;
+    self.voiceThirdImageView.hidden = YES;
+    
+}
+
+-(void) sAnimation2
+{
+    self.timer2 = [NSTimer scheduledTimerWithTimeInterval:0.9 target:self selector:@selector(animation2) userInfo:nil repeats:YES];
+    [self.timer2 fire];
+}
+
+-(void) animation2
+{
+    self.voiceFirstImageView.hidden = NO;
+    self.voiceSecondImageView.hidden = NO;
+    self.voiceThirdImageView.hidden = YES;
+}
+
+-(void) sAnimation3
+{
+    self.timer3 = [NSTimer scheduledTimerWithTimeInterval:0.9 target:self selector:@selector(animation3) userInfo:nil repeats:YES];
+    [self.timer3 fire];
+}
+
+-(void) animation3
+{
+    self.voiceFirstImageView.hidden = NO;
+    self.voiceSecondImageView.hidden = NO;
+    self.voiceThirdImageView.hidden = NO;
+}
+
+-(void) startAnimation
+{
+    self.timer1 = [NSTimer scheduledTimerWithTimeInterval:0.9 target:self selector:@selector(animation1) userInfo:nil repeats:YES];
+    [self.timer1 fire];
+    [self performSelector:@selector(sAnimation2) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(sAnimation3) withObject:nil afterDelay:0.6];
+}
+
+- (IBAction)tapVoiceButton:(id)sender {
+    self.voiceButton.enabled = NO;
+    [self startAnimation];
+    self.recoderTempFile = [self.recoderTempFile stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSURL *fileUrl = [NSURL URLWithString:self.recoderTempFile];
+    NSString *pdfname = nil;
+    pdfname = [[NSBundle mainBundle] pathForResource:@"Gentleman" ofType:@"mp3"];
+//    pdfname = [pdfname stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL*url=[NSURL fileURLWithPath:pdfname];
+    [self playMovieAtURL:url];
+//    NSData *soundFile = [[NSData alloc] initWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:nil];
+//    AVAudioPlayer * avPlayer = [[AVAudioPlayer alloc] initWithData:soundFile error:&error];
+//    avPlayer.delegate = self;
+//    if ([avPlayer prepareToPlay]) {
+//        avPlayer.volume = 1.0f;
+//        [avPlayer play];
+//    }else{
+//        NSLog(@"---------------%@",[error localizedDescription]);
+//    }
+}
+
+-(void)playMovieAtURL:(NSURL*)theURL
+{
+    self.moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:theURL];
+    //    self.moviePlayeraa.view.frame = self.view.frame;//全屏播放（全屏播放不可缺）
+    //    self.moviePlayeraa.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;//全屏播放（全屏播放不可缺）
+    [self.moviePlayer setControlStyle:MPMovieControlStyleFullscreen];
+    [self.moviePlayer setFullscreen:YES animated:NO];
+    self.isPlaying = YES;
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:NO];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(myMovieFinishedCallback:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:self.moviePlayer];
+    [self.moviePlayer play];
+//    [self presentMoviePlayerViewControllerAnimated:self.moviePlayeraa];
+}
+
+// When the movie is done, release the controller.
+-(void)myMovieFinishedCallback:(NSNotification*)aNotification
+{
+//    MPMoviePlayerController* theMovie = [aNotification object];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+//                                                  object:theMovie];
+    [self stopAnimation];
+    self.isPlaying = NO;
+}
+
+-(void) stopAnimation
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:MPMoviePlayerPlaybackDidFinishNotification
+                                                  object:self.moviePlayer];
+    [self.timer1 invalidate];
+    [self.timer2 invalidate];
+    [self.timer3 invalidate];
+    self.voiceFirstImageView.hidden = NO;
+    self.voiceSecondImageView.hidden = NO;
+    self.voiceThirdImageView.hidden = NO;
+}
+
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    self.voiceButton.enabled = YES;
+    [self stopAnimation];
+}
+
+-(void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error
+{
+    self.voiceButton.enabled = YES;
+    [self stopAnimation];
+    NSLog(@"-------------%@",[error description]);
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

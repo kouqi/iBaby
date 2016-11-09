@@ -1,0 +1,244 @@
+//
+//  kqDayFoodListViewController.m
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-8-20.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import "kqDayFoodListViewController.h"
+#import "kqDayFoodCell.h"
+#import "kqCreatNewDayFoodViewController.h"
+@interface kqDayFoodListViewController ()
+@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *dataArray,*imageArray,*rowHightArray;
+@end
+
+@implementation kqDayFoodListViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UIImageView *topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wave.png"]];
+    topView.frame = CGRectMake(0, 0, 320, 10);
+    [self.view addSubview:topView];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, 320, [HNAGeneral fixIP5:406])];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+    [self initTopBar];
+    [self sortArray];
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(CGFloat) returnHeightWithText:(NSString *) content andIsHasImage:(BOOL) isHasImage
+{
+    CGFloat height = 20.0f;
+    CGSize size = [content sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(280, 500) lineBreakMode:NSLineBreakByWordWrapping];
+    if (size.height >= 20.0f) {
+        height += size.height;
+    }else{
+        height += 20.0f;
+    }
+    if (isHasImage) {
+        height += 136.0f;
+    }else{
+        height += 5.0f;
+    }
+    return height;
+}
+
+-(void) sortArray
+{
+    NSArray *arr = [self.dictionary valueForKey:@"array"];
+    if (arr.count != 0) {
+        self.dataArray = [NSMutableArray array];
+        for (int i = 0; i < arr.count; i++) {
+            [self.dataArray addObject:[arr objectAtIndex:i]];
+        }
+    }
+//    NSArray *arrs = [self.dictionary valueForKey:@"array"];
+    self.imageArray = [NSMutableArray array];
+    if (arr.count) {
+        for (int i = 0; i < arr.count;) {
+            NSMutableArray *as = [NSMutableArray array];
+            NSArray *ass = [[arr objectAtIndex:i] valueForKey:@"imgList"];
+            if (ass.count != 0) {
+                for (int j = 0; j < ass.count; j++) {
+                    NSString *urlStr = [NSString stringWithFormat:@"%@%@",self.fileUrl,[[ass objectAtIndex:j] valueForKey:@"imgPath"]];
+                    [as addObject:urlStr];
+                    i++;
+                    if (i >= arr.count) {
+                        break;
+                    }
+                }
+            }else{
+                i++;
+            }
+            if (as.count != 0) {
+                [self.imageArray addObject:as];
+            }
+        }
+    }
+    self.rowHightArray = [NSMutableArray array];
+    for (int i = 0; i < self.dataArray.count; i++) {
+        NSDictionary *dic = [self.dataArray objectAtIndex:i];
+        NSString *content = [dic valueForKey:@"activityContent"];
+        BOOL isHasImage;
+        if (self.imageArray.count != 0) {
+            NSArray *arr = [self.imageArray objectAtIndex:0];
+            if (arr.count != 0) {
+                isHasImage = YES;
+            }else{
+                isHasImage = NO;
+            }
+        }else{
+            isHasImage = NO;
+        }
+        NSNumber *hn = [NSNumber numberWithFloat:[self returnHeightWithText:content andIsHasImage:isHasImage]];
+        [self.rowHightArray addObject:hn];
+    }
+    [self.tableView reloadData];
+}
+
+-(void) initTopBar
+{
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton addTarget:self action:@selector(tapBackButton) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame =CGRectMake(0.0f, 6.0f, 23.0f, 23.0f);
+    [leftButton setImage:[UIImage imageNamed:@"leftBack.png"] forState:UIControlStateNormal];
+    UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = left;
+//    if (self.isEditMode) {
+//        UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [rightButton addTarget:self action:@selector(tapEditButton) forControlEvents:UIControlEventTouchUpInside];
+//        rightButton.frame =CGRectMake(0.0f, 0.0f, 60.0f, 44.0f);
+//        [rightButton setTitle:@"编辑" forState:UIControlStateNormal];
+//        [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+//        self.navigationItem.rightBarButtonItem = right;
+//    }
+}
+
+-(void) tapBackButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) tapEditButton
+{
+    kqCreatNewDayFoodViewController *cndfVc = [[kqCreatNewDayFoodViewController alloc] initWithNibName:@"kqCreatNewDayFoodViewController" bundle:nil];
+    cndfVc.title = @"创建食谱";
+    [self.navigationController pushViewController:cndfVc animated:YES];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+//    return 3;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSNumber *number = [self.rowHightArray objectAtIndex:indexPath.row];
+    return [number floatValue];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    kqDayFoodCell *cell = (kqDayFoodCell *)[[[NSBundle mainBundle] loadNibNamed:@"kqDayFoodCell" owner:self options:nil] objectAtIndex:0];
+    NSDictionary *dic = [self.dataArray objectAtIndex:indexPath.row];
+    cell.nameLabel.text = [dic valueForKey:@"activityContent"];
+    cell.fiLabel.text = [dic valueForKey:@"activityTitle"];
+    CGSize size = [[dic valueForKey:@"activityContent"] sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(280, 500) lineBreakMode:NSLineBreakByWordWrapping];
+    if (size.height >= 20.0f) {
+        cell.nameLabel.frame = CGRectMake(cell.nameLabel.frame.origin.x, cell.nameLabel.frame.origin.y, cell.nameLabel.frame.size.width, size.height);
+        cell.fiImageView.frame = CGRectMake(cell.fiImageView.frame.origin.x, cell.nameLabel.frame.origin.y + cell.nameLabel.frame.size.height + 5.0f, cell.fiImageView.frame.size.width, cell.fiImageView.frame.size.height);
+        cell.seImageView.frame = CGRectMake(cell.seImageView.frame.origin.x, cell.nameLabel.frame.origin.y + cell.nameLabel.frame.size.height + 5.0f, cell.seImageView.frame.size.width, cell.seImageView.frame.size.height);
+        cell.thImageView.frame = CGRectMake(cell.thImageView.frame.origin.x, cell.nameLabel.frame.origin.y + cell.nameLabel.frame.size.height + 5.0f, cell.thImageView.frame.size.width, cell.thImageView.frame.size.height);
+    }
+    if (self.imageArray.count != 0) {
+        NSArray *arrs = [self.imageArray objectAtIndex:indexPath.row];
+        switch (arrs.count) {
+            case 1:
+            {
+                cell.fiImageView.hidden = NO;
+                [cell.fiImageView setImageWithURL:[NSURL URLWithString:[arrs objectAtIndex:0]] placeholderImage:[UIImage imageNamed:@"defaultPicture.png"]];
+            }
+                break;
+            case 2:
+            {
+                cell.fiImageView.hidden = NO;
+                [cell.fiImageView setImageWithURL:[NSURL URLWithString:[arrs objectAtIndex:0]] placeholderImage:[UIImage imageNamed:@"defaultPicture.png"]];
+                cell.seImageView.hidden = NO;
+                [cell.seImageView setImageWithURL:[NSURL URLWithString:[arrs objectAtIndex:1]] placeholderImage:[UIImage imageNamed:@"defaultPicture.png"]];
+            }
+                break;
+            case 3:
+            {
+                cell.fiImageView.hidden = NO;
+                [cell.fiImageView setImageWithURL:[NSURL URLWithString:[arrs objectAtIndex:0]] placeholderImage:[UIImage imageNamed:@"defaultPicture.png"]];
+                cell.seImageView.hidden = NO;
+                [cell.seImageView setImageWithURL:[NSURL URLWithString:[arrs objectAtIndex:1]] placeholderImage:[UIImage imageNamed:@"defaultPicture.png"]];
+                cell.thImageView.hidden = NO;
+                [cell.thImageView setImageWithURL:[NSURL URLWithString:[arrs objectAtIndex:2]] placeholderImage:[UIImage imageNamed:@"defaultPicture.png"]];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+//    NSString *mealType = [dic valueForKey:@"mealType"];
+//    if (!([mealType isKindOfClass:[NSNull class]] || [mealType isEqualToString:@""])) {
+//        int mi = [mealType intValue];
+//        switch (mi) {
+//            case 0:
+//                cell.fiLabel.text = @"早餐";
+//                break;
+//            case 1:
+//                cell.fiLabel.text = @"午餐";
+//                break;
+//            case 2:
+//                cell.fiLabel.text = @"晚餐";
+//                break;
+//                
+//            default:
+//                break;
+//        }
+//    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

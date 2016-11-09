@@ -1,0 +1,24 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "2a056d9a-1075-44f1-b23b-908204f33874++4778" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2a056d9a-1075-44f1-b23b-908204f33874++4778" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3A31E9D1-3BC0-4C39-8E94-EDB8FE051530",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2a056d9a-1075-44f1-b23b-908204f33874++4778" : "KindergartenPro\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "KindergartenPro",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "KindergartenPro.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/182.92.212.230\/svn\/repo",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2a056d9a-1075-44f1-b23b-908204f33874++4778"
+    }
+  ]
+}

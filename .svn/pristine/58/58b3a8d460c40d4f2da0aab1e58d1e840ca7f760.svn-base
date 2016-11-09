@@ -1,0 +1,125 @@
+//
+//  kqDynamicViewController.m
+//  KindergartenPro
+//
+//  Created by 海峰 on 14-9-3.
+//  Copyright (c) 2014年 海峰. All rights reserved.
+//
+
+#import "kqDynamicViewController.h"
+#import "kqWeekFoodListViewController.h"
+#import "kqWeekActivitiesViewController.h"
+#import "kqKindergartenNoticeViewController.h"
+#import "kqFoundViewController.h"
+@interface kqDynamicViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *schoolNoticeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *schoolActiveLabel;
+
+@end
+
+@implementation kqDynamicViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UIImageView *topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wave.png"]];
+    topView.frame = CGRectMake(0, 0, 320, 10);
+    [self.view addSubview:topView];
+    [self initView];
+    // Do any additional setup after loading the view from its nib.
+}
+
+-(void) initView
+{
+    kqDistingKindergartenAndSchool *dkas = [kqDistingKindergartenAndSchool sharedDistingKindergartenAndSchool];
+    self.schoolActiveLabel.text = dkas.schoolActive;
+    self.schoolNoticeLabel.text = dkas.schoolNotice;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.hidesBottomBarWhenPushed = NO;
+}
+
+- (IBAction)tapKindergartenActivitiesButton:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    UIButton *bt = (UIButton *) sender;
+    kqKindergartenNoticeViewController *knVC = [[kqKindergartenNoticeViewController alloc] initWithNibName:@"kqKindergartenNoticeViewController" bundle:nil];
+    kqDistingKindergartenAndSchool *dkas = [kqDistingKindergartenAndSchool sharedDistingKindergartenAndSchool];
+    switch (bt.tag) {
+        case 1000:
+        {
+            knVC.babyNoticeTypeId = 1;
+            knVC.title = dkas.schoolNotice;
+        }
+            break;
+        case 1001:
+        {
+            knVC.babyNoticeTypeId = 2;
+            knVC.title = @"安全手册";
+        }
+            break;
+        case 1002:
+        {
+            knVC.babyNoticeTypeId = 3;
+            knVC.title = dkas.schoolActive;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    knVC.isTeacher = YES;
+    [self.navigationController pushViewController:knVC animated:YES];
+}
+
+- (IBAction)tapWeekActivitiesButton:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    kqWeekActivitiesViewController *waVC = [[kqWeekActivitiesViewController alloc] initWithNibName:@"kqWeekActivitiesViewController" bundle:nil];
+    waVC.title = @"每周活动";
+    waVC.isTeacher = YES;
+    [self.navigationController pushViewController:waVC animated:YES];
+}
+
+- (IBAction)tapWeekFoodButton:(id)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    kqWeekFoodListViewController *wflVC = [[kqWeekFoodListViewController alloc] initWithNibName:@"kqWeekFoodListViewController" bundle:nil];
+    wflVC.title = @"每周食谱";
+    wflVC.isTeacher = YES;
+    [self.navigationController pushViewController:wflVC animated:YES];
+}
+- (IBAction)tapFoundButton:(UIButton *)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    kqFoundViewController *fVC = [[kqFoundViewController alloc] initWithNibName:@"kqFoundViewController" bundle:nil];
+    fVC.isTeacher = YES;
+    fVC.isPush = YES;
+    fVC.title = @"发现";
+    [self.navigationController pushViewController:fVC animated:YES];
+}
+
+- (IBAction)tapTeacherNoticeButton:(UIButton *)sender {
+    self.hidesBottomBarWhenPushed = YES;
+    kqKindergartenNoticeViewController *knVC = [[kqKindergartenNoticeViewController alloc] initWithNibName:@"kqKindergartenNoticeViewController" bundle:nil];
+    knVC.babyNoticeTypeId = 5;
+    knVC.title = @"教师通知";
+    knVC.isTeacher = YES;
+    [self.navigationController pushViewController:knVC animated:YES];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

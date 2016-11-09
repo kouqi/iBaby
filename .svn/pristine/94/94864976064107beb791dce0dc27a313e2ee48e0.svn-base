@@ -1,0 +1,31 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "HNAConstant.h"
+    #import "HNADownLoadManager.h"
+    #import "HNAGeneral.h"
+    #import "UIImage+kqNavigationBar.h"
+    #import "kqPersonalInfoMation.h"
+    #import "AIMTableViewIndexBar/AIMTableViewIndexBar.h"
+    #import "SDWebImage/UIImageView+WebCache.h"
+    #import "ChineseToPinyin.h"
+    #import "MobClick.h"
+    #import "APService.h"
+    #import "kqPlaySoundSingleton.h"
+    #import "kqDistingKindergartenAndSchool.h"
+#define CHANGEDAY(s) NSString *labelTime = [self.yearWeekDayLabel.text substringWithRange:NSMakeRange(0, 10)];self.dateString = s;[self initDateView];
+#define FORMATTER NSDateFormatter* formatter = [[NSDateFormatter alloc] init];[formatter setDateFormat:@"yyyy-MM-dd"];
+#define NOWTIME FORMATTER NSDate *nowDate = [NSDate date];NSString *nowTime = [formatter stringFromDate:nowDate];
+#endif
