@@ -157,6 +157,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 #pragma mark - 选择食谱类型
 - (IBAction)tapSelectFoodType:(UITapGestureRecognizer *)sender {
     UIView *view = sender.view;

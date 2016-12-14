@@ -14,11 +14,12 @@
 #import "VideoCallViewController.h"
 @interface kqHomePageViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,HNADownLoadDelegate,SelectCameraDelegate>
 {
-    VideoCallViewController* _videoCallVC;
+    
 }
 +(kqHomePageViewController *)sharedkqHomePageViewController;
 @property (strong, nonatomic) kqHomePageBabyCell *cell;
 @property (assign, nonatomic) NSDictionary *userinfo;
 @property (assign, nonatomic) NSInteger index;
+@property (strong, nonatomic) VideoCallViewController* videoCallVC;
 -(void) recieveNotificationWithDictionary:(NSDictionary *) notificationDictionary;
 @end

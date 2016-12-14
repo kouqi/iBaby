@@ -426,7 +426,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     [self.indexBar setIndexes:self.sectionArray];

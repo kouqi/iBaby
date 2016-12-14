@@ -14,7 +14,13 @@ CihDK8Md65oQ2M0++bA5UE4kQmBEd0N1lRnS2zyuTd78psy5SynUqD3493ay8w==*/
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginApi.h"
+#import "PushApi.h"
+#import "LogApi.h"
+#import "EAGLExView.h"
 #import "CallApi.h"
+#import "SysApi.h"
+#import "MeetingApi.h"
 
 #define VIDEO_INCOMING_UNDERVIEW 0
 #define VIDEO_TALKING_UNDERVIEW 1
@@ -55,7 +61,7 @@ CihDK8Md65oQ2M0++bA5UE4kQmBEd0N1lRnS2zyuTd78psy5SynUqD3493ay8w==*/
     UITextField* _audioRecSourceParam;
     NSString* _audioSourceRecordPara;
 }
-
+@property(strong, nonatomic) NSString *confString,*confIdString,*cameraPassword;
 - (void)setCallSession:(CallSession*)callSession;
 - (void)setQos:(int)qos;
 - (void)setUnderView:(int)videoCallTime;

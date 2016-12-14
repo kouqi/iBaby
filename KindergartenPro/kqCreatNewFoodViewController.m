@@ -69,6 +69,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 #pragma mark - 选择日期
 - (IBAction)tapSelectStartDateButton:(id)sender {
     self.isStart = YES;

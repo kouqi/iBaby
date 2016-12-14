@@ -1,20 +1,28 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "11957FAB45B44FA14AF88FB272FC4B1F9DA350BC",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
     "2a056d9a-1075-44f1-b23b-908204f33874++4778" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "2a056d9a-1075-44f1-b23b-908204f33874++4778" : 0
+    "2a056d9a-1075-44f1-b23b-908204f33874++4778" : 0,
+    "11957FAB45B44FA14AF88FB272FC4B1F9DA350BC" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3A31E9D1-3BC0-4C39-8E94-EDB8FE051530",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "2a056d9a-1075-44f1-b23b-908204f33874++4778" : "KindergartenPro\/"
+    "2a056d9a-1075-44f1-b23b-908204f33874++4778" : "KindergartenPro\/",
+    "11957FAB45B44FA14AF88FB272FC4B1F9DA350BC" : "iBaby\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "KindergartenPro",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "KindergartenPro.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kouqi\/iBaby.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "11957FAB45B44FA14AF88FB272FC4B1F9DA350BC"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/182.92.212.230\/svn\/repo",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",

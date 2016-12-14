@@ -769,6 +769,9 @@ bool isFirst = YES;
             if (_videoCallVC == nil) {
                 _videoCallVC = [[VideoCallViewController alloc]init];
             }
+            _videoCallVC.confString = [NSString stringWithString:confString];
+            _videoCallVC.confIdString = [NSString stringWithString:confIdString];
+            _videoCallVC.cameraPassword = [NSString stringWithString:[infomationDictionary valueForKey:@"cameraPassword"]];
             _videoCallVC.title = @"看宝宝";
             [self presentViewController:_videoCallVC animated:YES completion:^{}];
             [_videoCallVC setCallSession:session1];
@@ -794,7 +797,10 @@ bool isFirst = YES;
     [self removeEventResponder];
     // Dispose of any resources that can be recreated.
 }
-
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];

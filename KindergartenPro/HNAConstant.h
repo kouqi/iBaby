@@ -24,8 +24,11 @@
 //#define URL_BASE @"http://182.92.212.230/baby"//测试
 //#define URL_BASE @"http://estore.5ikuma.com/baby"//测试
 //#define URL_BASE @"http://111.47.120.51/baby"  http://182.92.212.230/baby/
-//#define URL_BASE @"http://babytest.5ikuma.com/baby"//测试
-#define URL_BASE @"http://123.56.105.127/baby"//正式
+#define URL_BASE @"http://babytest.5ikuma.com/baby"//最新测试
+//#define URL_BASE @"https://babytest.5ikuma.com/baby"//最新测试https版
+//#define URL_BASE @"http://123.56.105.127/baby"//正式
+//#define URL_BASE @"https://123.56.105.127/baby"//正式https版  https://baby.5ikuma.com/baby
+//#define URL_BASE @"https://baby.5ikuma.com/baby"//正式https版域名版
 #define URL_RTSP @"http://111.47.111.169:8340/nvswsu/httpAction"
 #define FIRSTAUTH_RTSP 5000
 #define SECONDREQUEST_RTSP 5001

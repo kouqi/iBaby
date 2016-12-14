@@ -7,7 +7,7 @@
 //
 
 #import "VideoCallViewController.h"
-
+#import "kqVideoLandScapeModeViewController.h"
 @interface VideoCallViewController ()
 
 - (void)setViewController;
@@ -30,7 +30,15 @@
     [super viewDidLoad];
     [self initTopBar];
     [self setViewController];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
 	// Do any additional setup after loading the view.
+}
+
+- (void)orientChange:(NSNotification *)noti {
+    UIScreen *ms = [UIScreen mainScreen];
+    _videoContainer.frame = CGRectMake(0, 0, ms.bounds.size.width, ms.bounds.size.height);
+    _endButton.frame = CGRectMake(30, ms.bounds.size.height - 60 - 20, ms.bounds.size.width - 60, 60);
+    ((EAGLExView *)_callSession.remoteView).frame = CGRectMake(0, 0, ms.bounds.size.width, ms.bounds.size.height);
 }
 
 -(void) initTopBar
@@ -77,6 +85,7 @@
     _audioRecStatusParam = nil;
     _videoRecStatusParamHint = nil;
     _videoRecStatusParam = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
 
@@ -85,7 +94,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 - (void)setViewController
 {
     UIScreen *ms = [UIScreen mainScreen];
@@ -128,6 +140,7 @@
 //    [self.view addSubview:_qosLabel];
 //    
     _endButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *landScapeButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    _voiceButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    _videoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //    _dtmfButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -151,6 +164,7 @@
 //    [_audioRecStop setFrame:CGRectMake(200, 215, 85, 40)];
     
     [_endButton setFrame:CGRectMake(30, ms.bounds.size.height - 60 - 20, ms.bounds.size.width - 60, 60)];
+    [landScapeButton setFrame:CGRectMake(30, ms.bounds.size.height - 60 - 60, ms.bounds.size.width - 60, 60)];
 //    [_voiceButton setFrame:CGRectMake(30, 330, 125, 60)];
 //    [_videoButton setFrame:CGRectMake(165, 330, 125, 60)];
 //    [_dtmfButton setFrame:CGRectMake(30, 330, 80, 60)];
@@ -167,6 +181,10 @@
     [_endButton setTitle:@"结束观看" forState:UIControlStateNormal];
     _endButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];
     [_endButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    
+    [landScapeButton setTitle:@"横屏观看" forState:UIControlStateNormal];
+    landScapeButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    [landScapeButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
 //    [_voiceButton setTitle:@"Voice" forState:UIControlStateNormal];
 //    [_videoButton setTitle:@"Video" forState:UIControlStateNormal];
 //    [_dtmfButton setTitle:@"Dtmf" forState:UIControlStateNormal];
@@ -181,6 +199,7 @@
 //    [_audioRecResume addTarget:self action:@selector(clickAudioRecordBtn:) forControlEvents:UIControlEventTouchUpInside];
 //    [_audioRecStop addTarget:self action:@selector(clickAudioRecordBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_endButton addTarget:self action:@selector(clickEndButton:) forControlEvents:UIControlEventTouchUpInside];
+    [landScapeButton addTarget:self action:@selector(clickLandScapeButton) forControlEvents:UIControlEventTouchUpInside];
 //    [_voiceButton addTarget:self action:@selector(clickVoiceButton:) forControlEvents:UIControlEventTouchUpInside];
 //    [_dtmfButton addTarget:self action:@selector(clickDtmfButton:) forControlEvents:UIControlEventTouchUpInside];
 //    [_videoButton addTarget:self action:@selector(clickVideoButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -191,6 +210,7 @@
 //    [self.view addSubview:_videoRecStart];
 //    [self.view addSubview:_videoRecStop];
     [self.view addSubview:_endButton];
+//    [self.view addSubview:landScapeButton];//横屏按键
 //    [self.view addSubview:_voiceButton];
 //    [self.view addSubview:_dtmfButton];
 //    [self.view addSubview:_videoButton];
@@ -268,6 +288,22 @@
 //    _videoRecStatusParam.text = @"¬ºœÒø’œ–";
 //    _videoRecStatusParam.tag = 38;
 //    [self.view addSubview:_videoRecStatusParam];
+}
+
+-(void) clickLandScapeButton
+{
+    UIScreen *ms = [UIScreen mainScreen];
+    EAGLExView* localView = [[EAGLExView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    EAGLExView* remoteView = [[EAGLExView alloc] initWithFrame:CGRectMake(0, 0, ms.bounds.size.width, ms.bounds.size.height)];
+//    NSLog(@"------------%@,%@,%@?=%@",confString,confIdString,passwordString,[infomationDictionary valueForKey:@"cameraPassword"]);
+    [CallApi setConfigValue:CALL_CFG_VIDEO_DISPLAY_TYPE minortype:CALL_CFG_MINOR_BUTT configvalue:@"0"];
+    CallSession *session1 = [MeetingApi quickJoinVideoConf:self.confString confId:self.confIdString confPwd:self.cameraPassword localView:localView remoteView:remoteView];
+    kqVideoLandScapeModeViewController *vlsmvc = [[kqVideoLandScapeModeViewController alloc] init];
+    [vlsmvc setCallSession:session1];
+    [vlsmvc setUnderView:VIDEO_MAKECALL_UNDERVIEW];
+    [vlsmvc showVideo:session1];
+    
+    [self presentViewController:vlsmvc animated:YES completion:^{}];
 }
 
 - (void)clickVideoGetSnapShot:(id)sender

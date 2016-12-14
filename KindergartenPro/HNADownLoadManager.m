@@ -75,6 +75,9 @@ static HNADownLoadManager *downLoadManager;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
         [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
         
+        //增加https验证
+        manager.securityPolicy.validatesDomainName = NO;
+        
         [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             NSLog(@"111");
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -163,6 +166,8 @@ static HNADownLoadManager *downLoadManager;
         //如果报接受类型不一致请替换一致text/html或别的
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
         [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+        //增加https验证
+        manager.securityPolicy.validatesDomainName = NO;
         
         [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             NSLog(@"111");
@@ -198,7 +203,8 @@ static HNADownLoadManager *downLoadManager;
         //如果报接受类型不一致请替换一致text/html或别的
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
         [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-        
+        //增加https验证
+        manager.securityPolicy.validatesDomainName = NO;
         [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             NSLog(@"111");
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -240,7 +246,8 @@ static HNADownLoadManager *downLoadManager;
         //如果报接受类型不一致请替换一致text/html或别的
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
         [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-        
+        //增加https验证
+        manager.securityPolicy.validatesDomainName = NO;
         [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             NSLog(@"111");
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -278,7 +285,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
-    
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -313,6 +321,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -350,6 +360,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -395,6 +407,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -441,6 +455,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -478,6 +494,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -647,6 +665,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -683,6 +703,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -719,6 +741,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -778,6 +802,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -836,6 +862,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -893,6 +921,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1022,6 +1052,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1060,6 +1092,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1099,6 +1133,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1136,6 +1172,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1178,6 +1216,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1215,6 +1255,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1252,6 +1294,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1289,6 +1333,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1326,6 +1372,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1412,6 +1460,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1449,6 +1499,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1486,6 +1538,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1525,6 +1579,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1562,6 +1618,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1604,6 +1662,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1641,6 +1701,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1706,6 +1768,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1744,6 +1808,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -1791,6 +1857,8 @@ static HNADownLoadManager *downLoadManager;
     //如果报接受类型不一致请替换一致text/html或别的
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
     [manager.requestSerializer setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
+    //增加https验证
+    manager.securityPolicy.validatesDomainName = NO;
     [manager GET:urlStr parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"111");
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
